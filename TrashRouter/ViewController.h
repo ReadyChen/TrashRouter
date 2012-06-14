@@ -7,7 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController : UIViewController
+@class KMLPlacemark;
+
+@interface ViewController : UIViewController <NSXMLParserDelegate,MKMapViewDelegate,CLLocationManagerDelegate> {
+    IBOutlet MKMapView *mapView;
+    NSXMLParser *xmlParser;
+    IBOutlet UISlider *mySlider;
+    IBOutlet UILabel *lblSlider;
+    NSMutableArray *_placemarks;
+    KMLPlacemark *_placemark;
+}
+
+@property(assign, nonatomic) IBOutlet MKMapView *mapView;
+@property(assign, nonatomic) NSXMLParser *xmlParser;
+@property (nonatomic, retain) IBOutlet UISlider *mySlider;
+@property (nonatomic, retain) IBOutlet UILabel *lblSlider;
+@property (nonatomic, retain) NSMutableArray *_placemarks;
+@property (nonatomic, retain) KMLPlacemark *_placemark;
+
+- (IBAction) sliderValueChanged:(id)sender;
+- (void) MyFunc:(NSString *)strTmp;
 
 @end

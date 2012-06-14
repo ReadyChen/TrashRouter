@@ -7,30 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B8724A9157882C900F32CDE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8724A8157882C900F32CDE /* CoreLocation.framework */; };
+		1BA1225715874D6D00176F60 /* NK113.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1BA1225615874D6D00176F60 /* NK113.xml */; };
+		1BA25D6A157783A50099E122 /* TrashPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA25D69157783A40099E122 /* TrashPoint.m */; };
 		1BD3378E1574D3DB00813D5E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD3378D1574D3DB00813D5E /* UIKit.framework */; };
 		1BD337901574D3DB00813D5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD3378F1574D3DB00813D5E /* Foundation.framework */; };
-		1BD337921574D3DB00813D5E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD337911574D3DB00813D5E /* CoreGraphics.framework */; };
 		1BD337981574D3DB00813D5E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1BD337961574D3DB00813D5E /* InfoPlist.strings */; };
 		1BD3379A1574D3DB00813D5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD337991574D3DB00813D5E /* main.m */; };
 		1BD3379E1574D3DB00813D5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD3379D1574D3DB00813D5E /* AppDelegate.m */; };
 		1BD337A11574D3DB00813D5E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BD3379F1574D3DB00813D5E /* MainStoryboard.storyboard */; };
 		1BD337A41574D3DB00813D5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD337A31574D3DB00813D5E /* ViewController.m */; };
+		1BD337AB1574D5D900813D5E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD337AA1574D5D900813D5E /* MapKit.framework */; };
+		1BD337B21574E5D600813D5E /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD337B11574E5D600813D5E /* MyAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B8724A8157882C900F32CDE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1BA1225615874D6D00176F60 /* NK113.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NK113.xml; sourceTree = "<group>"; };
+		1BA25D68157783A40099E122 /* TrashPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrashPoint.h; sourceTree = "<group>"; };
+		1BA25D69157783A40099E122 /* TrashPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrashPoint.m; sourceTree = "<group>"; };
 		1BD337891574D3DB00813D5E /* TrashRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrashRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD3378D1574D3DB00813D5E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1BD3378F1574D3DB00813D5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1BD337911574D3DB00813D5E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		1BD337951574D3DB00813D5E /* TrashRouter-Info.plist */ = {isa = PBXFileReference; path = "TrashRouter-Info.plist"; sourceTree = "<group>"; };
+		1BD337951574D3DB00813D5E /* TrashRouter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrashRouter-Info.plist"; sourceTree = "<group>"; };
 		1BD337971574D3DB00813D5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1BD337991574D3DB00813D5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1BD3379B1574D3DB00813D5E /* TrashRouter-Prefix.pch */ = {isa = PBXFileReference; path = "TrashRouter-Prefix.pch"; sourceTree = "<group>"; };
-		1BD3379C1574D3DB00813D5E /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		1BD3379B1574D3DB00813D5E /* TrashRouter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrashRouter-Prefix.pch"; sourceTree = "<group>"; };
+		1BD3379C1574D3DB00813D5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1BD3379D1574D3DB00813D5E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1BD337A01574D3DB00813D5E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		1BD337A21574D3DB00813D5E /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		1BD337A21574D3DB00813D5E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1BD337A31574D3DB00813D5E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1BD337AA1574D5D900813D5E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1BD337B01574E5D600813D5E /* MyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
+		1BD337B11574E5D600813D5E /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,19 +48,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B8724A9157882C900F32CDE /* CoreLocation.framework in Frameworks */,
+				1BD337AB1574D5D900813D5E /* MapKit.framework in Frameworks */,
 				1BD3378E1574D3DB00813D5E /* UIKit.framework in Frameworks */,
 				1BD337901574D3DB00813D5E /* Foundation.framework in Frameworks */,
-				1BD337921574D3DB00813D5E /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BA25D6715775C810099E122 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				1BA1225615874D6D00176F60 /* NK113.xml */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
 		1BD3377E1574D3DB00813D5E = {
 			isa = PBXGroup;
 			children = (
 				1BD337931574D3DB00813D5E /* TrashRouter */,
+				1BA25D6715775C810099E122 /* Resource */,
 				1BD3378C1574D3DB00813D5E /* Frameworks */,
 				1BD3378A1574D3DB00813D5E /* Products */,
 			);
@@ -67,9 +87,10 @@
 		1BD3378C1574D3DB00813D5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B8724A8157882C900F32CDE /* CoreLocation.framework */,
+				1BD337AA1574D5D900813D5E /* MapKit.framework */,
 				1BD3378D1574D3DB00813D5E /* UIKit.framework */,
 				1BD3378F1574D3DB00813D5E /* Foundation.framework */,
-				1BD337911574D3DB00813D5E /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -83,6 +104,10 @@
 				1BD337A21574D3DB00813D5E /* ViewController.h */,
 				1BD337A31574D3DB00813D5E /* ViewController.m */,
 				1BD337941574D3DB00813D5E /* Supporting Files */,
+				1BD337B01574E5D600813D5E /* MyAnnotation.h */,
+				1BD337B11574E5D600813D5E /* MyAnnotation.m */,
+				1BA25D68157783A40099E122 /* TrashPoint.h */,
+				1BA25D69157783A40099E122 /* TrashPoint.m */,
 			);
 			path = TrashRouter;
 			sourceTree = "<group>";
@@ -150,6 +175,7 @@
 			files = (
 				1BD337981574D3DB00813D5E /* InfoPlist.strings in Resources */,
 				1BD337A11574D3DB00813D5E /* MainStoryboard.storyboard in Resources */,
+				1BA1225715874D6D00176F60 /* NK113.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +189,8 @@
 				1BD3379A1574D3DB00813D5E /* main.m in Sources */,
 				1BD3379E1574D3DB00813D5E /* AppDelegate.m in Sources */,
 				1BD337A41574D3DB00813D5E /* ViewController.m in Sources */,
+				1BD337B21574E5D600813D5E /* MyAnnotation.m in Sources */,
+				1BA25D6A157783A50099E122 /* TrashPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +300,7 @@
 				1BD337A91574D3DB00813D5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
