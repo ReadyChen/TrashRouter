@@ -19,6 +19,7 @@
 		1BD337A41574D3DB00813D5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD337A31574D3DB00813D5E /* ViewController.m */; };
 		1BD337AB1574D5D900813D5E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD337AA1574D5D900813D5E /* MapKit.framework */; };
 		1BD337B21574E5D600813D5E /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD337B11574E5D600813D5E /* MyAnnotation.m */; };
+		1BF50BB215BCFCFD005E478A /* DDAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF50BB115BCFCFD005E478A /* DDAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		1BD337AA1574D5D900813D5E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1BD337B01574E5D600813D5E /* MyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
 		1BD337B11574E5D600813D5E /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
+		1BF50BB015BCFCFD005E478A /* DDAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnnotation.h; sourceTree = "<group>"; };
+		1BF50BB115BCFCFD005E478A /* DDAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 		1BD337931574D3DB00813D5E /* TrashRouter */ = {
 			isa = PBXGroup;
 			children = (
+				1BF50BB015BCFCFD005E478A /* DDAnnotation.h */,
+				1BF50BB115BCFCFD005E478A /* DDAnnotation.m */,
 				1BD3379C1574D3DB00813D5E /* AppDelegate.h */,
 				1BD3379D1574D3DB00813D5E /* AppDelegate.m */,
 				1BD3379F1574D3DB00813D5E /* MainStoryboard.storyboard */,
@@ -191,6 +196,7 @@
 				1BD337A41574D3DB00813D5E /* ViewController.m in Sources */,
 				1BD337B21574E5D600813D5E /* MyAnnotation.m in Sources */,
 				1BA25D6A157783A50099E122 /* TrashPoint.m in Sources */,
+				1BF50BB215BCFCFD005E478A /* DDAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

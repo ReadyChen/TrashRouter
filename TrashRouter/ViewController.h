@@ -19,6 +19,10 @@
     IBOutlet UILabel *lblSlider;
     NSMutableArray *_placemarks;
     KMLPlacemark *_placemark;
+    IBOutlet UIButton *btnAdjust;
+    IBOutlet UIButton *btnAdjustBack;
+    IBOutlet UIButton *btnAdjustSubmit;
+    IBOutlet UIToolbar *toolbar;
 }
 
 @property(assign, nonatomic) IBOutlet MKMapView *mapView;
@@ -27,6 +31,10 @@
 @property (nonatomic, retain) IBOutlet UILabel *lblSlider;
 @property (nonatomic, retain) NSMutableArray *_placemarks;
 @property (nonatomic, retain) KMLPlacemark *_placemark;
+@property (nonatomic, retain) IBOutlet UIButton *btnAdjust;
+@property (nonatomic, retain) IBOutlet UIButton *btnAdjustBack;
+@property (nonatomic, retain) IBOutlet UIButton *btnAdjustSubmit;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 
 - (IBAction) sliderValueChanged:(id)sender;
 - (void) MyFunc:(NSString *)strTmp;

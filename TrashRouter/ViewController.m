@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "TrashPoint.h"
 #import "MyAnnotation.h"
+#import "DDAnnotation.h"
 
 #define FBOX(x) [NSNumber numberWithFloat:x]
 #define ELTYPE(typeName) (NSOrderedSame == [elementName caseInsensitiveCompare:@#typeName])
@@ -21,9 +22,126 @@
 @synthesize mapView;
 @synthesize xmlParser,mySlider,lblSlider;
 @synthesize _placemarks,_placemark;
+@synthesize btnAdjust,btnAdjustBack,btnAdjustSubmit;
+@synthesize toolbar;
+
+MKAnnotationView * AnnotationViewToAdjust = nil;
+DDAnnotation *annotationAdjust;
+NSInteger iSliderValue = 0;
+NSInteger iScreenStatus = 0;
+
+-(IBAction)reportAdjust:(UIButton *)sender{
+    NSLog(@" reportAdjust press");
+    
+	CLLocationCoordinate2D theCoordinate;
+	theCoordinate.latitude = AnnotationViewToAdjust.annotation.coordinate.latitude;
+    theCoordinate.longitude = AnnotationViewToAdjust.annotation.coordinate.longitude;
+    
+	annotationAdjust = [[[DDAnnotation alloc] initWithCoordinate:theCoordinate addressDictionary:nil] autorelease];
+	annotationAdjust.title = AnnotationViewToAdjust.annotation.title;
+	annotationAdjust.subtitle = AnnotationViewToAdjust.annotation.subtitle;
+	
+    // display PIN to Draggable for Adjust.
+	[self.mapView addAnnotation:annotationAdjust];
+    
+    // remove all KMLPlacemark
+    for(KMLPlacemark *placemark in _placemarks){
+        MyAnnotation *TmpAnnotation = placemark.annotation;
+        [mapView removeAnnotation:TmpAnnotation];
+    }
+    
+    // renew UI.
+    btnAdjust.hidden = YES;
+    btnAdjustBack.hidden = NO;
+    btnAdjustSubmit.hidden = NO;
+    
+    toolbar.hidden = YES;
+    iScreenStatus = 1;
+}
+
+-(IBAction)reportAdjustBack:(UIButton *)sender{
+    
+    // remove Adjust Pin.
+    if(annotationAdjust)
+    {
+        [mapView removeAnnotation:annotationAdjust];
+        annotationAdjust = nil;
+    }
+    
+    // display KMLPlacement.
+    for(KMLPlacemark *placemark in _placemarks){
+        
+        NSString *strTmpName = placemark.name;
+        MyAnnotation *TmpAnnotation = placemark.annotation;
+        NSInteger iTmpStartTime = placemark.iStartTime;
+        NSInteger iTmpEndTime = placemark.iEndTime;
+        NSInteger iTmpStatus = placemark.iStatus;
+        
+        NSInteger iNewStatus = ePASS;
+        if(iSliderValue >= iTmpStartTime && iSliderValue <= iTmpEndTime){
+            iNewStatus = ePRESENT;
+        }
+        if(iSliderValue < iTmpStartTime && iSliderValue < iTmpEndTime){
+            iNewStatus = eLATER;
+        }
+        
+        //if(iNewStatus != iTmpStatus)
+        {
+            switch(iNewStatus){
+                case ePASS:
+                    [mapView removeAnnotation:TmpAnnotation];
+                    placemark.iStatus = ePASS;
+                    break;
+                case ePRESENT:
+                    [mapView removeAnnotation:TmpAnnotation];
+                    TmpAnnotation.iPinColor = MKPinAnnotationColorRed;
+                    [mapView addAnnotation:TmpAnnotation];
+                    placemark.iStatus = ePRESENT;
+                    break;
+                case eLATER:
+                    [mapView removeAnnotation:TmpAnnotation];
+                    TmpAnnotation.iPinColor = MKPinAnnotationColorPurple;
+                    [mapView addAnnotation:TmpAnnotation];
+                    placemark.iStatus = eLATER;
+                    break;
+            }
+        }
+    }
+    
+    // renew UI.
+    btnAdjust.hidden = YES;
+    btnAdjustBack.hidden = YES;
+    btnAdjustSubmit.hidden = YES;
+    
+    toolbar.hidden = NO;
+    iScreenStatus = 0;
+    
+}
+-(IBAction)reportAdjustSubmit:(UIButton *)sender{
+    NSLog(@" reportAdjust - Submit press");
+    
+    // Send new coordated to auther.
+}
 
 - (IBAction) sliderValueChanged:(UISlider *)sender{
+    
+    // remove Adjust Pin.
+    if(annotationAdjust)
+    {
+        [mapView removeAnnotation:annotationAdjust];
+        annotationAdjust = nil;
+    }
+    
+    // renew UI.
+    btnAdjust.hidden = YES;
+    btnAdjustBack.hidden = YES;
+    btnAdjustSubmit.hidden = YES;
+    
+    mySlider.enabled = YES;
+    
+    // display KMLPlacement.
     NSInteger iValue = [sender value];
+    iSliderValue = iValue;
     NSString *strTmp = [NSString stringWithFormat:@"%i:%02i", (iValue/60), iValue%60 ];
     lblSlider.text = strTmp;
 
@@ -165,6 +283,10 @@
     userCurrentRegion.span.latitudeDelta = 0.05;
     userCurrentRegion.span.longitudeDelta = 0.05;
     [mapView setRegion:userCurrentRegion animated:YES];
+    
+    btnAdjust.hidden = YES;
+    btnAdjustBack.hidden = YES;
+    btnAdjustSubmit.hidden = YES;
 
 }
 
@@ -179,12 +301,45 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (void)mapView:(MKMapView *)mapview didAddAnnotationViews:(NSArray *)views{
+    for (id<MKAnnotation> currentAnnotation in mapview.annotations) {       
+        if ([currentAnnotation isEqual: annotationAdjust]) {
+            [mapview selectAnnotation:currentAnnotation animated:YES];
+        }
+    }
+}
+
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    AnnotationViewToAdjust = view;
+    if(iScreenStatus==0)// == 1 don't change btnAdjust hidden to NO.
+    {
+        btnAdjust.hidden = FALSE;
+    }
+}
+-(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
+{
+    btnAdjust.hidden = TRUE;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
+	
+	if (oldState == MKAnnotationViewDragStateDragging) {
+		DDAnnotation *annotation = (DDAnnotation *)annotationView.annotation;
+		annotation.subtitle = [NSString	stringWithFormat:@"%f %f", annotation.coordinate.latitude, annotation.coordinate.longitude];
+        
+        btnAdjust.hidden = YES;
+        btnAdjustBack.hidden = NO;
+        btnAdjustSubmit.hidden = NO;
+	}
+}
+
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation{
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
     if ([annotation isKindOfClass:[MyAnnotation class]]){
-        static NSString *MyAnnotationIdentifier = @"myAnnotation";
+        static NSString *MyAnnotationIdentifier = @"PinIdentifier";
         MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:MyAnnotationIdentifier];
 
         NSInteger iPinColor = [annotation getPinColor];
@@ -200,12 +355,16 @@
                 }
                 myPinView.animatesDrop = bAnimatesDrop;
             }
-            NSLog(@"Pass here");
+            
+            //UIImage *imageIcon = [UIImage imageNamed:@"scooterIcon.png"];
+            //myPinView.image = imageIcon;
+
             myPinView.pinColor = iPinColor;
             myPinView.canShowCallout = YES;
             myPinView.draggable = YES;
             return myPinView;
         }else{
+            
             if(0)
             {
                 BOOL bAnimatesDrop = NO;
@@ -222,7 +381,13 @@
         }
     }
     
-    return nil;
+    static NSString * const kPinAnnotationIdentifier = @"PinIdentifier";
+    MKPinAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kPinAnnotationIdentifier];
+    annotationView.draggable = YES;
+    annotationView.canShowCallout = YES;
+    annotationView.pinColor = MKPinAnnotationColorGreen;
+    return [annotationView autorelease];
+
 }
 
 @end

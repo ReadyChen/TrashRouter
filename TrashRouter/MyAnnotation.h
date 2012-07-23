@@ -18,7 +18,7 @@
     NSInteger iPinColor;
 }
 
-@property(assign, nonatomic) CLLocationCoordinate2D myCoordinate;
+@property(nonatomic, readwrite, assign) CLLocationCoordinate2D myCoordinate;
 @property(retain, nonatomic) NSString *myTitle;
 @property(retain, nonatomic) NSString *mySubTitle;
 @property(assign, nonatomic) NSInteger iPinColor;
