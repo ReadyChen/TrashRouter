@@ -11,6 +11,9 @@
 #import "MyAnnotation.h"
 #import "DDAnnotation.h"
 
+#import "SKPSMTPMessage.h"
+#import "NSData+Base64Additions.h"
+
 #define FBOX(x) [NSNumber numberWithFloat:x]
 #define ELTYPE(typeName) (NSOrderedSame == [elementName caseInsensitiveCompare:@#typeName])
 
@@ -71,11 +74,11 @@ NSInteger iScreenStatus = 0;
     // display KMLPlacement.
     for(KMLPlacemark *placemark in _placemarks){
         
-        NSString *strTmpName = placemark.name;
+        //NSString *strTmpName = placemark.name;
         MyAnnotation *TmpAnnotation = placemark.annotation;
         NSInteger iTmpStartTime = placemark.iStartTime;
         NSInteger iTmpEndTime = placemark.iEndTime;
-        NSInteger iTmpStatus = placemark.iStatus;
+        //NSInteger iTmpStatus = placemark.iStatus;
         
         NSInteger iNewStatus = ePASS;
         if(iSliderValue >= iTmpStartTime && iSliderValue <= iTmpEndTime){
@@ -118,9 +121,61 @@ NSInteger iScreenStatus = 0;
     
 }
 -(IBAction)reportAdjustSubmit:(UIButton *)sender{
-    NSLog(@" reportAdjust - Submit press");
     
     // Send new coordated to auther.
+    SKPSMTPMessage *testMsg = [[SKPSMTPMessage alloc] init];
+    testMsg.fromEmail = @"ready.chen22@gmail.com";
+    testMsg.toEmail = @"ready.chen@hotmail.com";
+    testMsg.relayHost = @"smtp.gmail.com";
+    testMsg.requiresAuth = YES;
+    testMsg.login = @"ready.chen22@gmail.com";
+    testMsg.pass = @"QCA5355Gd";
+    testMsg.subject = @"test message";
+    //testMsg.bccEmail = @"testbcc@test.com";
+    testMsg.wantsSecure = YES; // smtp.gmail.com doesn't work without TLS!
+    
+    // Only do this for self-signed certs!
+    // testMsg.validateSSLChain = NO;
+    testMsg.delegate = self;
+    
+    NSString *newCoordinate = [NSString stringWithFormat:@"%f,%f",annotationAdjust.coordinate.latitude,annotationAdjust.coordinate.longitude];
+    
+    NSString *strMailBody = [[NSString alloc] initWithString:@"Mail Body"];
+    strMailBody = [strMailBody stringByAppendingString:@"\r\n"];
+    strMailBody = [strMailBody stringByAppendingString:annotationAdjust.title];
+    strMailBody = [strMailBody stringByAppendingString:@"\r\n"];
+    strMailBody = [strMailBody stringByAppendingString:annotationAdjust.subtitle];
+    strMailBody = [strMailBody stringByAppendingString:@"\r\n"];
+    strMailBody = [strMailBody stringByAppendingString:newCoordinate];
+    
+    //NSDictionary *plainPart = [NSDictionary dictionaryWithObjectsAndKeys:@"text/plain",kSKPSMTPPartContentTypeKey,
+    //                           @"This is a tést messåge.",kSKPSMTPPartMessageKey,@"8bit",kSKPSMTPPartContentTransferEncodingKey,nil];
+    NSDictionary *plainPart = [NSDictionary dictionaryWithObjectsAndKeys:@"text/plain",kSKPSMTPPartContentTypeKey,
+                               strMailBody,kSKPSMTPPartMessageKey,@"8bit",kSKPSMTPPartContentTransferEncodingKey,nil];
+    
+    NSString *vcfPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"vcf"];
+    NSData *vcfData = [NSData dataWithContentsOfFile:vcfPath];
+    
+    NSDictionary *vcfPart = [NSDictionary dictionaryWithObjectsAndKeys:@"text/directory;\r\n\tx-unix-mode=0644;\r\n\tname=\"test.vcf\"",kSKPSMTPPartContentTypeKey,
+                             @"attachment;\r\n\tfilename=\"test.vcf\"",kSKPSMTPPartContentDispositionKey,[vcfData encodeBase64ForData],kSKPSMTPPartMessageKey,@"base64",kSKPSMTPPartContentTransferEncodingKey,nil];
+    
+    testMsg.parts = [NSArray arrayWithObjects:plainPart,vcfPart,nil];
+    
+    [testMsg send];
+}
+
+- (void)messageSent:(SKPSMTPMessage *)message
+{
+    [message release];
+    
+    NSLog(@"delegate - message sent");
+}
+
+- (void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error
+{
+    [message release];
+    
+    NSLog(@"delegate - error(%d): %@", [error code], [error localizedDescription]);
 }
 
 - (IBAction) sliderValueChanged:(UISlider *)sender{

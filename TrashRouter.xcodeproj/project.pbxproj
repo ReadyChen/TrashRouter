@@ -20,7 +20,31 @@
 		1BD337AB1574D5D900813D5E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD337AA1574D5D900813D5E /* MapKit.framework */; };
 		1BD337B21574E5D600813D5E /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD337B11574E5D600813D5E /* MyAnnotation.m */; };
 		1BF50BB215BCFCFD005E478A /* DDAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF50BB115BCFCFD005E478A /* DDAnnotation.m */; };
+		1BFB6EA615BD848100012384 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD3378F1574D3DB00813D5E /* Foundation.framework */; };
+		1BFB6EB715BD85C800012384 /* HSK_CFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BFB6EB115BD85C800012384 /* HSK_CFUtilities.h */; };
+		1BFB6EB815BD85C800012384 /* HSK_CFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB6EB215BD85C800012384 /* HSK_CFUtilities.m */; };
+		1BFB6EBB15BD85C800012384 /* SKPSMTPMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BFB6EB515BD85C800012384 /* SKPSMTPMessage.h */; };
+		1BFB6EBC15BD85C800012384 /* SKPSMTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB6EB615BD85C800012384 /* SKPSMTPMessage.m */; };
+		1BFB6EBD15BD85F300012384 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD3378D1574D3DB00813D5E /* UIKit.framework */; };
+		1BFB6EBF15BD85FF00012384 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BFB6EBE15BD85FF00012384 /* CoreGraphics.framework */; };
+		1BFB6EC115BD860600012384 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BFB6EC015BD860600012384 /* CFNetwork.framework */; };
+		1BFB6EC615BD86C600012384 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = 1BFB6EC515BD86C600012384 /* test.vcf */; };
+		1BFB6EC915BD90A200012384 /* Base64Transcoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB6EC815BD90A200012384 /* Base64Transcoder.m */; };
+		1BFB6ECC15BD90AB00012384 /* NSData+Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB6ECB15BD90AB00012384 /* NSData+Base64Additions.m */; };
+		1BFB6ECE15BD90E900012384 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1BFB6ECD15BD90E900012384 /* Info.plist */; };
+		1BFB6ECF15BE2AA700012384 /* libsmtpmessage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BFB6EA515BD848100012384 /* libsmtpmessage.a */; };
+		1BFB6ED015BE2AB600012384 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BFB6EC015BD860600012384 /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1BFB6EC215BD866C00012384 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BD337801574D3DB00813D5E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BFB6EA415BD848100012384;
+			remoteInfo = libsmtpmessage;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1B8724A8157882C900F32CDE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -44,6 +68,19 @@
 		1BD337B11574E5D600813D5E /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
 		1BF50BB015BCFCFD005E478A /* DDAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnnotation.h; sourceTree = "<group>"; };
 		1BF50BB115BCFCFD005E478A /* DDAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnnotation.m; sourceTree = "<group>"; };
+		1BFB6EA515BD848100012384 /* libsmtpmessage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsmtpmessage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BFB6EB115BD85C800012384 /* HSK_CFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HSK_CFUtilities.h; path = TrashRouter/Classes/HSK_CFUtilities.h; sourceTree = SOURCE_ROOT; };
+		1BFB6EB215BD85C800012384 /* HSK_CFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HSK_CFUtilities.m; path = TrashRouter/Classes/HSK_CFUtilities.m; sourceTree = SOURCE_ROOT; };
+		1BFB6EB515BD85C800012384 /* SKPSMTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKPSMTPMessage.h; path = TrashRouter/Classes/SKPSMTPMessage.h; sourceTree = SOURCE_ROOT; };
+		1BFB6EB615BD85C800012384 /* SKPSMTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKPSMTPMessage.m; path = TrashRouter/Classes/SKPSMTPMessage.m; sourceTree = SOURCE_ROOT; };
+		1BFB6EBE15BD85FF00012384 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1BFB6EC015BD860600012384 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1BFB6EC515BD86C600012384 /* test.vcf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test.vcf; path = TrashRouter/test.vcf; sourceTree = "<group>"; };
+		1BFB6EC715BD90A200012384 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		1BFB6EC815BD90A200012384 /* Base64Transcoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Transcoder.m; sourceTree = "<group>"; };
+		1BFB6ECA15BD90AB00012384 /* NSData+Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64Additions.h"; sourceTree = "<group>"; };
+		1BFB6ECB15BD90AB00012384 /* NSData+Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64Additions.m"; sourceTree = "<group>"; };
+		1BFB6ECD15BD90E900012384 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = TrashRouter/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +88,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BFB6ED015BE2AB600012384 /* CFNetwork.framework in Frameworks */,
+				1BFB6ECF15BE2AA700012384 /* libsmtpmessage.a in Frameworks */,
 				1B8724A9157882C900F32CDE /* CoreLocation.framework in Frameworks */,
 				1BD337AB1574D5D900813D5E /* MapKit.framework in Frameworks */,
 				1BD3378E1574D3DB00813D5E /* UIKit.framework in Frameworks */,
 				1BD337901574D3DB00813D5E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BFB6EA215BD848100012384 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BFB6EC115BD860600012384 /* CFNetwork.framework in Frameworks */,
+				1BFB6EBF15BD85FF00012384 /* CoreGraphics.framework in Frameworks */,
+				1BFB6EBD15BD85F300012384 /* UIKit.framework in Frameworks */,
+				1BFB6EA615BD848100012384 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +114,8 @@
 		1BA25D6715775C810099E122 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				1BFB6ECD15BD90E900012384 /* Info.plist */,
+				1BFB6EC515BD86C600012384 /* test.vcf */,
 				1BA1225615874D6D00176F60 /* NK113.xml */,
 			);
 			name = Resource;
@@ -74,6 +126,7 @@
 			children = (
 				1BD337931574D3DB00813D5E /* TrashRouter */,
 				1BA25D6715775C810099E122 /* Resource */,
+				1BFB6EA715BD848100012384 /* Email (refresh from Handshake!) */,
 				1BD3378C1574D3DB00813D5E /* Frameworks */,
 				1BD3378A1574D3DB00813D5E /* Products */,
 			);
@@ -83,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				1BD337891574D3DB00813D5E /* TrashRouter.app */,
+				1BFB6EA515BD848100012384 /* libsmtpmessage.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,6 +144,8 @@
 		1BD3378C1574D3DB00813D5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1BFB6EC015BD860600012384 /* CFNetwork.framework */,
+				1BFB6EBE15BD85FF00012384 /* CoreGraphics.framework */,
 				1B8724A8157882C900F32CDE /* CoreLocation.framework */,
 				1BD337AA1574D5D900813D5E /* MapKit.framework */,
 				1BD3378D1574D3DB00813D5E /* UIKit.framework */,
@@ -101,6 +157,10 @@
 		1BD337931574D3DB00813D5E /* TrashRouter */ = {
 			isa = PBXGroup;
 			children = (
+				1BFB6ECA15BD90AB00012384 /* NSData+Base64Additions.h */,
+				1BFB6ECB15BD90AB00012384 /* NSData+Base64Additions.m */,
+				1BFB6EC715BD90A200012384 /* Base64Transcoder.h */,
+				1BFB6EC815BD90A200012384 /* Base64Transcoder.m */,
 				1BF50BB015BCFCFD005E478A /* DDAnnotation.h */,
 				1BF50BB115BCFCFD005E478A /* DDAnnotation.m */,
 				1BD3379C1574D3DB00813D5E /* AppDelegate.h */,
@@ -108,11 +168,11 @@
 				1BD3379F1574D3DB00813D5E /* MainStoryboard.storyboard */,
 				1BD337A21574D3DB00813D5E /* ViewController.h */,
 				1BD337A31574D3DB00813D5E /* ViewController.m */,
-				1BD337941574D3DB00813D5E /* Supporting Files */,
 				1BD337B01574E5D600813D5E /* MyAnnotation.h */,
 				1BD337B11574E5D600813D5E /* MyAnnotation.m */,
 				1BA25D68157783A40099E122 /* TrashPoint.h */,
 				1BA25D69157783A40099E122 /* TrashPoint.m */,
+				1BD337941574D3DB00813D5E /* Supporting Files */,
 			);
 			path = TrashRouter;
 			sourceTree = "<group>";
@@ -128,25 +188,67 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1BFB6EA715BD848100012384 /* Email (refresh from Handshake!) */ = {
+			isa = PBXGroup;
+			children = (
+				1BFB6EB115BD85C800012384 /* HSK_CFUtilities.h */,
+				1BFB6EB215BD85C800012384 /* HSK_CFUtilities.m */,
+				1BFB6EB515BD85C800012384 /* SKPSMTPMessage.h */,
+				1BFB6EB615BD85C800012384 /* SKPSMTPMessage.m */,
+			);
+			name = "Email (refresh from Handshake!)";
+			path = libsmtpmessage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1BFB6EA315BD848100012384 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BFB6EB715BD85C800012384 /* HSK_CFUtilities.h in Headers */,
+				1BFB6EBB15BD85C800012384 /* SKPSMTPMessage.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		1BD337881574D3DB00813D5E /* TrashRouter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1BD337A71574D3DB00813D5E /* Build configuration list for PBXNativeTarget "TrashRouter" */;
 			buildPhases = (
+				1BD337871574D3DB00813D5E /* Resources */,
 				1BD337851574D3DB00813D5E /* Sources */,
 				1BD337861574D3DB00813D5E /* Frameworks */,
-				1BD337871574D3DB00813D5E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1BFB6EC315BD866C00012384 /* PBXTargetDependency */,
 			);
 			name = TrashRouter;
 			productName = TrashRouter;
 			productReference = 1BD337891574D3DB00813D5E /* TrashRouter.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1BFB6EA415BD848100012384 /* libsmtpmessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BFB6EAF15BD848200012384 /* Build configuration list for PBXNativeTarget "libsmtpmessage" */;
+			buildPhases = (
+				1BFB6EA115BD848100012384 /* Sources */,
+				1BFB6EA215BD848100012384 /* Frameworks */,
+				1BFB6EA315BD848100012384 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libsmtpmessage;
+			productName = libsmtpmessage;
+			productReference = 1BFB6EA515BD848100012384 /* libsmtpmessage.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -169,6 +271,7 @@
 			projectRoot = "";
 			targets = (
 				1BD337881574D3DB00813D5E /* TrashRouter */,
+				1BFB6EA415BD848100012384 /* libsmtpmessage */,
 			);
 		};
 /* End PBXProject section */
@@ -181,6 +284,8 @@
 				1BD337981574D3DB00813D5E /* InfoPlist.strings in Resources */,
 				1BD337A11574D3DB00813D5E /* MainStoryboard.storyboard in Resources */,
 				1BA1225715874D6D00176F60 /* NK113.xml in Resources */,
+				1BFB6EC615BD86C600012384 /* test.vcf in Resources */,
+				1BFB6ECE15BD90E900012384 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,10 +302,29 @@
 				1BD337B21574E5D600813D5E /* MyAnnotation.m in Sources */,
 				1BA25D6A157783A50099E122 /* TrashPoint.m in Sources */,
 				1BF50BB215BCFCFD005E478A /* DDAnnotation.m in Sources */,
+				1BFB6EC915BD90A200012384 /* Base64Transcoder.m in Sources */,
+				1BFB6ECC15BD90AB00012384 /* NSData+Base64Additions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BFB6EA115BD848100012384 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BFB6EB815BD85C800012384 /* HSK_CFUtilities.m in Sources */,
+				1BFB6EBC15BD85C800012384 /* SKPSMTPMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BFB6EC315BD866C00012384 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BFB6EA415BD848100012384 /* libsmtpmessage */;
+			targetProxy = 1BFB6EC215BD866C00012384 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1BD337961574D3DB00813D5E /* InfoPlist.strings */ = {
@@ -287,6 +411,39 @@
 			};
 			name = Release;
 		};
+		1BFB6EAD15BD848200012384 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/TrashRouter.dst;
+				EXECUTABLE_PREFIX = "";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		1BFB6EAE15BD848200012384 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/TrashRouter.dst;
+				EXECUTABLE_PREFIX = "";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -307,6 +464,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		1BFB6EAF15BD848200012384 /* Build configuration list for PBXNativeTarget "libsmtpmessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BFB6EAD15BD848200012384 /* Debug */,
+				1BFB6EAE15BD848200012384 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

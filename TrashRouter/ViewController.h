@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <CFNetwork/CFNetwork.h>
+
+#import "SKPSMTPMessage.h"
 
 @class KMLPlacemark;
 
-@interface ViewController : UIViewController <NSXMLParserDelegate,MKMapViewDelegate,CLLocationManagerDelegate> {
+@interface ViewController : UIViewController <NSXMLParserDelegate,MKMapViewDelegate,CLLocationManagerDelegate,SKPSMTPMessageDelegate> {
     IBOutlet MKMapView *mapView;
     NSXMLParser *xmlParser;
     IBOutlet UISlider *mySlider;
