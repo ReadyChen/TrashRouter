@@ -17,24 +17,38 @@
 #define FBOX(x) [NSNumber numberWithFloat:x]
 #define ELTYPE(typeName) (NSOrderedSame == [elementName caseInsensitiveCompare:@#typeName])
 
-//@interface ViewController ()
-//@end
-
 @implementation ViewController
 
 @synthesize mapView;
 @synthesize xmlParser,mySlider,lblSlider;
 @synthesize _placemarks,_placemark;
-@synthesize btnAdjust,btnAdjustBack,btnAdjustSubmit;
+@synthesize btnAdjust,btnAdjustBack,btnAdjustSubmit,btnAbout;
 @synthesize toolbar;
+@synthesize AlphaActivityIndicatorView,AlphaImageView,lblAlphaStatus;
 
-MKAnnotationView * AnnotationViewToAdjust = nil;
-DDAnnotation *annotationAdjust;
-NSInteger iSliderValue = 0;
-NSInteger iScreenStatus = 0;
+CLLocationCoordinate2D taipeiCenterCoordinate; // define Taipei Center Coordinate.
+CLLocationManager *locationManager; // use for user current Location.
+MKAnnotationView * AnnotationViewToAdjust = nil; // remember user selected annotation in main screen.
+DDAnnotation *annotationAdjust; // only use in Adjust screen, display annotation for drag and drog.
+NSInteger iSliderValue = 0; // remember SlderValue for user back from Adjust to main screen.
+NSInteger iScreenStatus = 0; // remember user screen status. 0=main,1=Adjust,2=unuse.
+NSTimer *AlphaTimer; // timer ticker for close "alpha imageview layer".
+NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range 1000~1400(HH*60+MM).
 
--(IBAction)reportAdjust:(UIButton *)sender{
-    NSLog(@" reportAdjust press");
+
+//=============================
+//
+//
+//      UI Area
+//
+//
+//=============================
+
+-(IBAction)clickbyAbout:(UIButton *)sender{
+    NSLog(@"click by About");
+}
+
+-(IBAction)clickAdjust:(UIButton *)sender{
     
 	CLLocationCoordinate2D theCoordinate;
 	theCoordinate.latitude = AnnotationViewToAdjust.annotation.coordinate.latitude;
@@ -57,14 +71,16 @@ NSInteger iScreenStatus = 0;
     btnAdjust.hidden = YES;
     btnAdjustBack.hidden = NO;
     btnAdjustSubmit.hidden = NO;
+    btnAbout.hidden = NO;
+    lblSlider.hidden = YES;
     
     toolbar.hidden = YES;
     iScreenStatus = 1;
 }
 
--(IBAction)reportAdjustBack:(UIButton *)sender{
+-(IBAction)clickAdjustBack:(UIButton *)sender{
     
-    // remove Adjust Pin.
+    // remove Adjust Pin. user back to main screen.
     if(annotationAdjust)
     {
         [mapView removeAnnotation:annotationAdjust];
@@ -115,22 +131,43 @@ NSInteger iScreenStatus = 0;
     btnAdjust.hidden = YES;
     btnAdjustBack.hidden = YES;
     btnAdjustSubmit.hidden = YES;
+    btnAbout.hidden = YES;
+    lblSlider.hidden = NO;
     
     toolbar.hidden = NO;
     iScreenStatus = 0;
-    
 }
--(IBAction)reportAdjustSubmit:(UIButton *)sender{
+
+-(IBAction)clickAdjustSubmit:(UIButton *)sender{
     
+    NSInteger iLength = [annotationAdjust.title length];
+    NSLog(@"%d",iLength);
+    if(iLength < 12)
+    {
+        // renew UI. reject Submit.
+        lblAlphaStatus.text = @"請先拖曳綠標";
+        lblAlphaStatus.hidden = NO;
+        AlphaImageView.hidden = NO;
+        
+        btnAdjustBack.enabled = NO;
+        btnAdjustSubmit.enabled = NO;
+        btnAbout.enabled = NO;
+        
+        // trigger Submited UI timer.
+        AlphaTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(AlphaTimerFunc) userInfo:nil repeats:YES];
+        
+        return;
+    }
+
     // Send new coordated to auther.
     SKPSMTPMessage *testMsg = [[SKPSMTPMessage alloc] init];
-    testMsg.fromEmail = @"ready.chen22@gmail.com";
-    testMsg.toEmail = @"ready.chen@hotmail.com";
+    testMsg.fromEmail = @"ready.chen33@gmail.com";
+    testMsg.toEmail = @"ready.chen22@gmail.com";
     testMsg.relayHost = @"smtp.gmail.com";
     testMsg.requiresAuth = YES;
-    testMsg.login = @"ready.chen22@gmail.com";
-    testMsg.pass = @"QCA5355Gd";
-    testMsg.subject = @"test message";
+    testMsg.login = @"ready.chen33@gmail.com";
+    testMsg.pass = @"hedoni88";
+    testMsg.subject = @"User Adjust";
     //testMsg.bccEmail = @"testbcc@test.com";
     testMsg.wantsSecure = YES; // smtp.gmail.com doesn't work without TLS!
     
@@ -153,15 +190,33 @@ NSInteger iScreenStatus = 0;
     NSDictionary *plainPart = [NSDictionary dictionaryWithObjectsAndKeys:@"text/plain",kSKPSMTPPartContentTypeKey,
                                strMailBody,kSKPSMTPPartMessageKey,@"8bit",kSKPSMTPPartContentTransferEncodingKey,nil];
     
-    NSString *vcfPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"vcf"];
-    NSData *vcfData = [NSData dataWithContentsOfFile:vcfPath];
+    // if you want to attach any file. open this function.
+    if(0)
+    {
+        NSString *vcfPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"vcf"];
+        NSData *vcfData = [NSData dataWithContentsOfFile:vcfPath];
     
-    NSDictionary *vcfPart = [NSDictionary dictionaryWithObjectsAndKeys:@"text/directory;\r\n\tx-unix-mode=0644;\r\n\tname=\"test.vcf\"",kSKPSMTPPartContentTypeKey,
+        NSDictionary *vcfPart = [NSDictionary dictionaryWithObjectsAndKeys:@"text/directory;\r\n\tx-unix-mode=0644;\r\n\tname=\"test.vcf\"",kSKPSMTPPartContentTypeKey,
                              @"attachment;\r\n\tfilename=\"test.vcf\"",kSKPSMTPPartContentDispositionKey,[vcfData encodeBase64ForData],kSKPSMTPPartMessageKey,@"base64",kSKPSMTPPartContentTransferEncodingKey,nil];
+        
+        testMsg.parts = [NSArray arrayWithObjects:plainPart,vcfPart,nil];
+    }
     
-    testMsg.parts = [NSArray arrayWithObjects:plainPart,vcfPart,nil];
+    testMsg.parts = [NSArray arrayWithObjects:plainPart,nil];
     
     [testMsg send];
+    
+    // renew UI.
+    lblAlphaStatus.text = @"發送中...";
+    [AlphaActivityIndicatorView startAnimating];
+    
+    AlphaActivityIndicatorView.hidden= NO;
+    lblAlphaStatus.hidden = NO;
+    AlphaImageView.hidden = NO;
+    
+    btnAdjustBack.enabled = NO;
+    btnAdjustSubmit.enabled = NO;
+    btnAbout.enabled = NO;
 }
 
 - (void)messageSent:(SKPSMTPMessage *)message
@@ -169,6 +224,13 @@ NSInteger iScreenStatus = 0;
     [message release];
     
     NSLog(@"delegate - message sent");
+    
+    // renew UI.
+    lblAlphaStatus.text = @"已完成,謝謝";
+    [AlphaActivityIndicatorView stopAnimating];
+    
+    // trigger Submited UI timer.
+    AlphaTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(AlphaTimerFunc) userInfo:nil repeats:YES];
 }
 
 - (void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error
@@ -176,30 +238,129 @@ NSInteger iScreenStatus = 0;
     [message release];
     
     NSLog(@"delegate - error(%d): %@", [error code], [error localizedDescription]);
+    
+    // renew UI.
+    lblAlphaStatus.text = @"伺服器錯誤";
+    [AlphaActivityIndicatorView stopAnimating];
+    
+    // trigger Submited UI timer.
+    AlphaTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(AlphaTimerFunc) userInfo:nil repeats:YES];
+}
+
+NSInteger iTimerCountDown = 3;
+-(void) AlphaTimerFunc{
+    
+    // Display iTimerCounDown time pass with append to char @"."
+    lblAlphaStatus.text = [NSString stringWithFormat:@"%@%@",lblAlphaStatus.text, @"."];
+    
+    if(iTimerCountDown==0)
+    {
+        // renew UI.
+        AlphaActivityIndicatorView.hidden= YES;
+        lblAlphaStatus.hidden = YES;
+        AlphaImageView.hidden = YES;
+        
+        btnAdjustBack.enabled = YES;
+        btnAdjustSubmit.enabled = YES;
+        btnAbout.enabled = YES;
+        
+        // reset timer
+        [AlphaTimer invalidate];
+        AlphaTimer = nil;
+        iTimerCountDown = 3;
+    }
+    else {
+        // Count Down.
+        iTimerCountDown--;
+    }
 }
 
 - (IBAction) sliderValueChanged:(UISlider *)sender{
     
-    // remove Adjust Pin.
-    if(annotationAdjust)
-    {
-        [mapView removeAnnotation:annotationAdjust];
-        annotationAdjust = nil;
+    // remember Slider value.
+    iSliderValue = [sender value];
+    
+    // renew HHMM.
+    [self UpdateHHMM:iSliderValue];
+    
+    // renew KMLPlacement.
+    [self UpdatePlacemark];
+}
+
+- (IBAction)clickSetCurr:(id)sender{
+    
+    // get System YMD W HMS
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *now;
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | \
+    NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    
+    now=[NSDate date];
+    comps = [calendar components:unitFlags fromDate:now];
+    
+    NSInteger year=[comps year];
+    NSInteger week = [comps weekday];   
+    NSInteger month = [comps month];
+    NSInteger day = [comps day];
+    NSInteger hour = [comps hour];
+    NSInteger min = [comps minute];
+    NSInteger sec = [comps second];
+    
+    NSLog(@"%4d/%02d/%02d (%d) %02d:%02d:%02d", year,month,day,week,hour,min,sec);
+    
+    NSInteger iTmpValue = hour*60+min;
+    
+    // renew Slider & HHMM
+    if ( iTmpValue < 1000 ) {
+        [self UpdateHHMM:iTmpValue];
+        lblSlider.textColor = [UIColor blackColor];
+        HHMMTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(HHMMTimerFunc) userInfo:nil repeats:NO];
+        mySlider.value = 1000;
+        iSliderValue = mySlider.value;
+    } else if ( iTmpValue > 1400 ) {
+        [self UpdateHHMM:iTmpValue];
+        lblSlider.textColor = [UIColor blackColor];
+        HHMMTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(HHMMTimerFunc) userInfo:nil repeats:NO];
+        mySlider.value = 1400;
+        iSliderValue = mySlider.value;
+    } else {
+        mySlider.value = iTmpValue;
+        iSliderValue = mySlider.value;
+        [self UpdateHHMM:iSliderValue];
     }
     
-    // renew UI.
-    btnAdjust.hidden = YES;
-    btnAdjustBack.hidden = YES;
-    btnAdjustSubmit.hidden = YES;
+    // renew KMLPlacement.
+    [self UpdatePlacemark];
     
-    mySlider.enabled = YES;
+    // renew mapview setCenterCoordinate
+    if(locationManager.location.coordinate.latitude == 0 || locationManager.location.coordinate.longitude == 0 ){
+        // if can't get System Current Location. display Defined Taipei Center.
+        [mapView setCenterCoordinate:taipeiCenterCoordinate animated:YES];
+    }
+    else {
+        [mapView setCenterCoordinate:locationManager.location.coordinate animated:YES];
+    }
+}
+
+-(void)HHMMTimerFunc{
+    // renew HHMM.
+    [self UpdateHHMM:iSliderValue];
+    lblSlider.textColor = [UIColor redColor];
     
-    // display KMLPlacement.
-    NSInteger iValue = [sender value];
-    iSliderValue = iValue;
+    // reset timer
+    [HHMMTimer invalidate];
+    HHMMTimer = nil;
+}
+
+-(void)UpdateHHMM:(NSInteger)iValue
+{
     NSString *strTmp = [NSString stringWithFormat:@"%i:%02i", (iValue/60), iValue%60 ];
     lblSlider.text = strTmp;
+}
 
+-(void)UpdatePlacemark
+{
     for(KMLPlacemark *placemark in _placemarks){
         
         NSString *strTmpName = placemark.name;
@@ -209,10 +370,10 @@ NSInteger iScreenStatus = 0;
         NSInteger iTmpStatus = placemark.iStatus;
         
         NSInteger iNewStatus = ePASS;
-        if(iValue >= iTmpStartTime && iValue <= iTmpEndTime){
+        if(iSliderValue >= iTmpStartTime && iSliderValue <= iTmpEndTime){
             iNewStatus = ePRESENT;
         }
-        if(iValue < iTmpStartTime && iValue < iTmpEndTime){
+        if(iSliderValue < iTmpStartTime && iSliderValue < iTmpEndTime){
             iNewStatus = eLATER;
         }
         
@@ -225,7 +386,7 @@ NSInteger iScreenStatus = 0;
             NSLog(@"</Placemark>");
             NSLog(@" ");
         }
-         
+        
         if(iNewStatus != iTmpStatus)
         {
             switch(iNewStatus){
@@ -250,14 +411,13 @@ NSInteger iScreenStatus = 0;
     }
 }
 
-- (IBAction)btn1:(id)sender{
-    NSLog(@"btn");
-
-}
-
-- (void) MyFunc:(NSString *)strTmp{
-    NSLog(@"Teijsd = %@",strTmp);
-}
+//=============================
+//
+//
+//      xml Area
+//
+//
+//=============================
 
 - (void) InitXmlParser{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"NK113" ofType:@"xml"];
@@ -313,10 +473,25 @@ NSInteger iScreenStatus = 0;
     }
 }
 
+
+
+
+//=============================
+//
+//
+//      view Area
+//
+//
+//=============================
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // Init Data.
+    taipeiCenterCoordinate.latitude = 25.048533;
+    taipeiCenterCoordinate.longitude = 121.541343;
     
     // Init Xml Parser
     [self InitXmlParser];
@@ -324,25 +499,43 @@ NSInteger iScreenStatus = 0;
     mapView.delegate = self;
     mapView.showsUserLocation = YES;
 
-    // get Current Location
-    CLLocationManager *locationManager;
+    // get System Current Location
     locationManager = [[CLLocationManager alloc] init];
     locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
     locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
     [locationManager startUpdatingLocation];
 
-    // Display Map Region  
+    // Display Map Region
     MKCoordinateRegion userCurrentRegion;
     userCurrentRegion.center.latitude = locationManager.location.coordinate.latitude;
     userCurrentRegion.center.longitude = locationManager.location.coordinate.longitude;
-    userCurrentRegion.span.latitudeDelta = 0.05;
-    userCurrentRegion.span.longitudeDelta = 0.05;
+    if( userCurrentRegion.center.latitude == 0 || userCurrentRegion.center.longitude == 0 ){
+        // if can't get System Current Location. display Defined Taipei Center.
+        userCurrentRegion.center.latitude = taipeiCenterCoordinate.latitude;
+        userCurrentRegion.center.longitude = taipeiCenterCoordinate.longitude;
+        // can't get user location, Region large.
+        userCurrentRegion.span.latitudeDelta = 0.05;
+        userCurrentRegion.span.longitudeDelta = 0.05;
+    }
+    else {
+        // can get user location, Region small.
+        userCurrentRegion.span.latitudeDelta = 0.01;
+        userCurrentRegion.span.longitudeDelta = 0.01;
+    }
     [mapView setRegion:userCurrentRegion animated:YES];
     
+    // renew UI.
     btnAdjust.hidden = YES;
     btnAdjustBack.hidden = YES;
     btnAdjustSubmit.hidden = YES;
-
+    btnAbout.hidden = YES;
+    
+    AlphaActivityIndicatorView.hidden= YES;
+    [AlphaActivityIndicatorView stopAnimating];
+    lblAlphaStatus.hidden = YES;
+    AlphaImageView.hidden = YES;
+    
+    [self clickSetCurr:(id)nil];
 }
 
 - (void)viewDidUnload
@@ -356,36 +549,61 @@ NSInteger iScreenStatus = 0;
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+
+
+
+//=============================
+//
+//
+//      Map View Area
+//
+//
+//=============================
+
+
 - (void)mapView:(MKMapView *)mapview didAddAnnotationViews:(NSArray *)views{
-    for (id<MKAnnotation> currentAnnotation in mapview.annotations) {       
+    for (id<MKAnnotation> currentAnnotation in mapview.annotations) {
         if ([currentAnnotation isEqual: annotationAdjust]) {
             [mapview selectAnnotation:currentAnnotation animated:YES];
         }
     }
 }
 
+//annotation Select event.
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
+    // Remenber annotation been select to AnnotationViewToAdjust.
     AnnotationViewToAdjust = view;
+    
+    // iScreenStatus == 0 mean user in Main Screen. Display Adjust btn when Pin select.
+    // iScreenStatus == 1 mean user in Adjust Screen. Display
     if(iScreenStatus==0)// == 1 don't change btnAdjust hidden to NO.
     {
-        btnAdjust.hidden = FALSE;
+        btnAdjust.hidden = NO;
+    }
+    
+    // Don't display btnAdjust when user select THE pin "Current Location".
+    //if([view.annotation.title isEqualToString:@"Current Location"])
+    if ([view.annotation isKindOfClass:[MKUserLocation class]]) 
+    {
+        btnAdjust.hidden = YES;
     }
 }
+
+//annotation Deselect event.
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
-    btnAdjust.hidden = TRUE;
+    btnAdjust.hidden = YES;
 }
 
+//annotation Drag event.
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
 	
 	if (oldState == MKAnnotationViewDragStateDragging) {
 		DDAnnotation *annotation = (DDAnnotation *)annotationView.annotation;
-		annotation.subtitle = [NSString	stringWithFormat:@"%f %f", annotation.coordinate.latitude, annotation.coordinate.longitude];
-        
-        btnAdjust.hidden = YES;
-        btnAdjustBack.hidden = NO;
-        btnAdjustSubmit.hidden = NO;
+        NSString *strTmp = annotation.title;
+        strTmp = [strTmp substringToIndex:11];
+        annotation.title = [NSString stringWithFormat:@"%@ %f,%f", strTmp, annotation.coordinate.latitude, annotation.coordinate.longitude];
 	}
 }
 

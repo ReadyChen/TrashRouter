@@ -26,6 +26,10 @@
     IBOutlet UIButton *btnAdjustBack;
     IBOutlet UIButton *btnAdjustSubmit;
     IBOutlet UIToolbar *toolbar;
+    IBOutlet UIActivityIndicatorView *AlphaActivityIndicatorView;
+    IBOutlet UIImageView *AlphaImageView;
+    IBOutlet UILabel *lblAlphaStatus;
+    IBOutlet UIButton *btnAbout;
 }
 
 @property(assign, nonatomic) IBOutlet MKMapView *mapView;
@@ -38,8 +42,10 @@
 @property (nonatomic, retain) IBOutlet UIButton *btnAdjustBack;
 @property (nonatomic, retain) IBOutlet UIButton *btnAdjustSubmit;
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *AlphaActivityIndicatorView;
+@property (nonatomic, retain) IBOutlet UIImageView *AlphaImageView;
+@property (nonatomic, retain) IBOutlet UILabel *lblAlphaStatus;
+@property (nonatomic, retain) IBOutlet UIButton *btnAbout;
 
-- (IBAction) sliderValueChanged:(id)sender;
-- (void) MyFunc:(NSString *)strTmp;
 
 @end
