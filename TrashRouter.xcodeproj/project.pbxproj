@@ -7,7 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B032B3615DB85BF009CC5D5 /* TPE2917.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1B032B3515DB85BF009CC5D5 /* TPE2917.xml */; };
+		1B101C5C15C8F75E0035F997 /* TPE839.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1B101C5B15C8F75E0035F997 /* TPE839.xml */; };
+		1B2C392815C9B3A60036B2CD /* TPE1796.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1B2C392715C9B3A60036B2CD /* TPE1796.xml */; };
+		1B4CA2E415CC18FB00D7EE71 /* TPE2106.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CA2E315CC18FB00D7EE71 /* TPE2106.xml */; };
+		1B4CA2E715CC37E100D7EE71 /* TPE2292.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1B4CA2E615CC37E100D7EE71 /* TPE2292.xml */; };
+		1B5952DF15C6691600D388AD /* NK227.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1B5952DE15C6691600D388AD /* NK227.xml */; };
+		1B5952E215C6819800D388AD /* TPE400.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1B5952E115C6819800D388AD /* TPE400.xml */; };
+		1B84D77415C6AA60002FA9CD /* TPE731.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1B84D77315C6AA60002FA9CD /* TPE731.xml */; };
 		1B8724A9157882C900F32CDE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8724A8157882C900F32CDE /* CoreLocation.framework */; };
+		1B9DDA2115DDD1B9000667DA /* TPE4133.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1B9DDA2015DDD1B9000667DA /* TPE4133.xml */; };
 		1BA1225715874D6D00176F60 /* NK113.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1BA1225615874D6D00176F60 /* NK113.xml */; };
 		1BA25D6A157783A50099E122 /* TrashPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA25D69157783A40099E122 /* TrashPoint.m */; };
 		1BCBFF8815BFD1660032C91A /* Location.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BCBFF8615BFD1660032C91A /* Location.png */; };
@@ -22,6 +31,7 @@
 		1BD337AB1574D5D900813D5E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD337AA1574D5D900813D5E /* MapKit.framework */; };
 		1BD337B21574E5D600813D5E /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD337B11574E5D600813D5E /* MyAnnotation.m */; };
 		1BF50BB215BCFCFD005E478A /* DDAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF50BB115BCFCFD005E478A /* DDAnnotation.m */; };
+		1BF5996C15DCE0C0008E426C /* TPE3490.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1BF5996B15DCE0C0008E426C /* TPE3490.xml */; };
 		1BFB6EA615BD848100012384 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD3378F1574D3DB00813D5E /* Foundation.framework */; };
 		1BFB6EB715BD85C800012384 /* HSK_CFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BFB6EB115BD85C800012384 /* HSK_CFUtilities.h */; };
 		1BFB6EB815BD85C800012384 /* HSK_CFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB6EB215BD85C800012384 /* HSK_CFUtilities.m */; };
@@ -49,7 +59,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B032B3515DB85BF009CC5D5 /* TPE2917.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TPE2917.xml; sourceTree = "<group>"; };
+		1B101C5B15C8F75E0035F997 /* TPE839.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TPE839.xml; sourceTree = "<group>"; };
+		1B2C392715C9B3A60036B2CD /* TPE1796.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TPE1796.xml; sourceTree = "<group>"; };
+		1B4CA2E315CC18FB00D7EE71 /* TPE2106.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TPE2106.xml; sourceTree = "<group>"; };
+		1B4CA2E615CC37E100D7EE71 /* TPE2292.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TPE2292.xml; sourceTree = "<group>"; };
+		1B5952DE15C6691600D388AD /* NK227.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NK227.xml; sourceTree = "<group>"; };
+		1B5952E115C6819800D388AD /* TPE400.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TPE400.xml; sourceTree = "<group>"; };
+		1B70BE2C15D9FA9C00320062 /* TrashRouter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TrashRouter.entitlements; sourceTree = "<group>"; };
+		1B84D77315C6AA60002FA9CD /* TPE731.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TPE731.xml; sourceTree = "<group>"; };
 		1B8724A8157882C900F32CDE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1B9DDA2015DDD1B9000667DA /* TPE4133.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TPE4133.xml; sourceTree = "<group>"; };
 		1BA1225615874D6D00176F60 /* NK113.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NK113.xml; sourceTree = "<group>"; };
 		1BA25D68157783A40099E122 /* TrashPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrashPoint.h; sourceTree = "<group>"; };
 		1BA25D69157783A40099E122 /* TrashPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrashPoint.m; sourceTree = "<group>"; };
@@ -72,6 +92,7 @@
 		1BD337B11574E5D600813D5E /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
 		1BF50BB015BCFCFD005E478A /* DDAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnnotation.h; sourceTree = "<group>"; };
 		1BF50BB115BCFCFD005E478A /* DDAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnnotation.m; sourceTree = "<group>"; };
+		1BF5996B15DCE0C0008E426C /* TPE3490.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TPE3490.xml; sourceTree = "<group>"; };
 		1BFB6EA515BD848100012384 /* libsmtpmessage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsmtpmessage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFB6EB115BD85C800012384 /* HSK_CFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HSK_CFUtilities.h; path = TrashRouter/Classes/HSK_CFUtilities.h; sourceTree = SOURCE_ROOT; };
 		1BFB6EB215BD85C800012384 /* HSK_CFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HSK_CFUtilities.m; path = TrashRouter/Classes/HSK_CFUtilities.m; sourceTree = SOURCE_ROOT; };
@@ -118,11 +139,21 @@
 		1BA25D6715775C810099E122 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				1B9DDA2015DDD1B9000667DA /* TPE4133.xml */,
+				1BF5996B15DCE0C0008E426C /* TPE3490.xml */,
+				1B032B3515DB85BF009CC5D5 /* TPE2917.xml */,
+				1B4CA2E615CC37E100D7EE71 /* TPE2292.xml */,
+				1B4CA2E315CC18FB00D7EE71 /* TPE2106.xml */,
+				1B2C392715C9B3A60036B2CD /* TPE1796.xml */,
+				1B101C5B15C8F75E0035F997 /* TPE839.xml */,
+				1B84D77315C6AA60002FA9CD /* TPE731.xml */,
+				1B5952E115C6819800D388AD /* TPE400.xml */,
+				1B5952DE15C6691600D388AD /* NK227.xml */,
+				1BA1225615874D6D00176F60 /* NK113.xml */,
 				1BCBFF8615BFD1660032C91A /* Location.png */,
 				1BCBFF8715BFD1660032C91A /* Location@2x.png */,
 				1BFB6ECD15BD90E900012384 /* Info.plist */,
 				1BFB6EC515BD86C600012384 /* test.vcf */,
-				1BA1225615874D6D00176F60 /* NK113.xml */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -163,6 +194,7 @@
 		1BD337931574D3DB00813D5E /* TrashRouter */ = {
 			isa = PBXGroup;
 			children = (
+				1B70BE2C15D9FA9C00320062 /* TrashRouter.entitlements */,
 				1BFB6ECA15BD90AB00012384 /* NSData+Base64Additions.h */,
 				1BFB6ECB15BD90AB00012384 /* NSData+Base64Additions.m */,
 				1BFB6EC715BD90A200012384 /* Base64Transcoder.h */,
@@ -294,6 +326,16 @@
 				1BFB6ECE15BD90E900012384 /* Info.plist in Resources */,
 				1BCBFF8815BFD1660032C91A /* Location.png in Resources */,
 				1BCBFF8915BFD1660032C91A /* Location@2x.png in Resources */,
+				1B5952DF15C6691600D388AD /* NK227.xml in Resources */,
+				1B5952E215C6819800D388AD /* TPE400.xml in Resources */,
+				1B84D77415C6AA60002FA9CD /* TPE731.xml in Resources */,
+				1B101C5C15C8F75E0035F997 /* TPE839.xml in Resources */,
+				1B2C392815C9B3A60036B2CD /* TPE1796.xml in Resources */,
+				1B4CA2E415CC18FB00D7EE71 /* TPE2106.xml in Resources */,
+				1B4CA2E715CC37E100D7EE71 /* TPE2292.xml in Resources */,
+				1B032B3615DB85BF009CC5D5 /* TPE2917.xml in Resources */,
+				1BF5996C15DCE0C0008E426C /* TPE3490.xml in Resources */,
+				1B9DDA2115DDD1B9000667DA /* TPE4133.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +401,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: WeiTing Chen (Y47943TX65)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -374,6 +417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C7522242-C283-4084-B76C-7799350FD5C9";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -383,7 +427,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WeiTing Chen";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -392,6 +437,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A75D9E43-2BE1-4991-A57A-5F3C1284B38D";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -403,7 +449,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrashRouter/TrashRouter-Prefix.pch";
 				INFOPLIST_FILE = "TrashRouter/TrashRouter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -414,7 +463,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrashRouter/TrashRouter-Prefix.pch";
 				INFOPLIST_FILE = "TrashRouter/TrashRouter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -428,9 +480,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = NO;
 			};
@@ -447,6 +500,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = NO;
 			};
