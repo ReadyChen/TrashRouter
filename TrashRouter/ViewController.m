@@ -22,9 +22,11 @@
 @synthesize mapView;
 @synthesize xmlParser,mySlider,lblSlider;
 @synthesize _placemarks,_placemark;
-@synthesize btnAdjust,btnAdjustBack,btnAdjustSubmit,btnAbout;
+@synthesize btnAdjust,btnAdjustBack,btnAdjustCurr,btnAdjustSubmit,btnAbout;
 @synthesize toolbar;
 @synthesize AlphaActivityIndicatorView,AlphaImageView,lblAlphaStatus;
+@synthesize adView, adViewIsVisible;
+@synthesize internetReach;
 
 CLLocationCoordinate2D taipeiCenterCoordinate; // define Taipei Center Coordinate.
 CLLocationManager *locationManager; // use for user current Location.
@@ -33,7 +35,7 @@ DDAnnotation *annotationAdjust; // only use in Adjust screen, display annotation
 NSInteger iSliderValue = 0; // remember SlderValue for user back from Adjust to main screen.
 NSInteger iScreenStatus = 0; // remember user screen status. 0=main,1=Adjust,2=unuse.
 NSTimer *AlphaTimer; // timer ticker for close "alpha imageview layer".
-NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range 1000~1400(HH*60+MM).
+NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range min~max(HH*60+MM).
 
 
 //=============================
@@ -46,6 +48,7 @@ NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range 100
 
 -(IBAction)clickbyAbout:(UIButton *)sender{
     NSLog(@"click by About");
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://sites.google.com/site/taipeitrashpoint/"]];
 }
 
 -(IBAction)clickAdjust:(UIButton *)sender{
@@ -70,6 +73,7 @@ NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range 100
     // renew UI.
     btnAdjust.hidden = YES;
     btnAdjustBack.hidden = NO;
+    btnAdjustCurr.hidden = ![locationManager locationServicesEnabled];
     btnAdjustSubmit.hidden = NO;
     btnAbout.hidden = NO;
     lblSlider.hidden = YES;
@@ -130,12 +134,30 @@ NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range 100
     // renew UI.
     btnAdjust.hidden = YES;
     btnAdjustBack.hidden = YES;
+    btnAdjustCurr.hidden = YES;
     btnAdjustSubmit.hidden = YES;
     btnAbout.hidden = YES;
     lblSlider.hidden = NO;
     
     toolbar.hidden = NO;
     iScreenStatus = 0;
+}
+
+-(IBAction)clickAdjustCurr:(UIButton *)sender{
+    // check if location service ternned off.
+    if(![locationManager locationServicesEnabled])
+        return;
+    
+    // set Curr Coordi to annotationAdjust.
+    annotationAdjust.coordinate = locationManager.location.coordinate;
+    
+    // renew annotationAdjust title.
+    NSString *strTmp = annotationAdjust.title;
+    strTmp = [strTmp substringToIndex:11];
+    annotationAdjust.title = [NSString stringWithFormat:@"%@ %f,%f", strTmp, annotationAdjust.coordinate.latitude, annotationAdjust.coordinate.longitude];
+    
+    // renew UI
+    [mapView setCenterCoordinate:locationManager.location.coordinate animated:YES];
 }
 
 -(IBAction)clickAdjustSubmit:(UIButton *)sender{
@@ -312,17 +334,17 @@ NSInteger iTimerCountDown = 3;
     NSInteger iTmpValue = hour*60+min;
     
     // renew Slider & HHMM
-    if ( iTmpValue < 1000 ) {
+    if ( iTmpValue < 990 ) {
         [self UpdateHHMM:iTmpValue];
         lblSlider.textColor = [UIColor blackColor];
         HHMMTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(HHMMTimerFunc) userInfo:nil repeats:NO];
-        mySlider.value = 1000;
+        mySlider.value = 990;
         iSliderValue = mySlider.value;
-    } else if ( iTmpValue > 1400 ) {
+    } else if ( iTmpValue > 1420 ) {
         [self UpdateHHMM:iTmpValue];
         lblSlider.textColor = [UIColor blackColor];
         HHMMTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(HHMMTimerFunc) userInfo:nil repeats:NO];
-        mySlider.value = 1400;
+        mySlider.value = 1420;
         iSliderValue = mySlider.value;
     } else {
         mySlider.value = iTmpValue;
@@ -334,12 +356,11 @@ NSInteger iTimerCountDown = 3;
     [self UpdatePlacemark];
     
     // renew mapview setCenterCoordinate
-    if(locationManager.location.coordinate.latitude == 0 || locationManager.location.coordinate.longitude == 0 ){
-        // if can't get System Current Location. display Defined Taipei Center.
-        [mapView setCenterCoordinate:taipeiCenterCoordinate animated:YES];
+    if( [locationManager locationServicesEnabled] ){
+        [mapView setCenterCoordinate:locationManager.location.coordinate animated:YES];
     }
     else {
-        [mapView setCenterCoordinate:locationManager.location.coordinate animated:YES];
+        // if can't get System Current Location. Do not set any new coordi.
     }
 }
 
@@ -411,6 +432,104 @@ NSInteger iTimerCountDown = 3;
     }
 }
 
+
+//=============================
+//
+//
+//      banner Area
+//
+//
+//=============================
+-(void)bannerViewDidLoadAd:(ADBannerView *)abanner {
+    
+    adView.hidden = NO;
+    //NSLog(@"ad bannerViewDidLoadAd = %d",adView.bannerLoaded);
+    
+}
+
+-(void)bannerView:(ADBannerView *)abanner didFailToReceiveAdWithError:(NSError *)error {
+    
+    //NSLog(@"ad didFailToReceiveAdWithError error:%@",error);
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    //NSLog(@"ad rotate");
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation))
+    {
+        adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierLandscape;
+        adView.frame = CGRectMake(0, 225, 0, 0);//CGRectZero;
+    }
+    else
+    {
+        adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
+        adView.frame = CGRectMake(0, 370, 0, 0);//CGRectZero;
+    }
+}
+
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)abanner willLeaveApplication:(BOOL)willLeave {
+    //NSLog(@"ad should begin");
+    return YES;
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)abanner {
+    //NSLog(@"ad did finish");
+}
+
+
+//=============================
+//
+//
+//      reachability Area
+//
+//
+//=============================
+- (void) updateInterfaceWithReachability: (Reachability*) curReach
+{
+    NetworkStatus netStatus = [curReach currentReachabilityStatus];
+    NSString* statusString= @"";
+    switch (netStatus)
+    {
+        case NotReachable:
+        {
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"訊息"
+                                                            message:@"需要有網路連線才能使用"
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"明白了", nil];
+            alert.cancelButtonIndex = -1;
+            [alert show];
+            [alert release];
+            
+            statusString = @"Access Not Available";
+            break;
+        }
+            
+        case ReachableViaWWAN:
+        {
+            statusString = @"Reachable WWAN";
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            statusString= @"Reachable WiFi";
+            break;
+        }
+    }
+    //NSLog(@" internet status = [%@]", statusString);
+}
+
+//Called by Reachability whenever status changes.
+- (void) reachabilityChanged: (NSNotification* )note
+{
+	Reachability* curReach = [note object];
+	NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+	[self updateInterfaceWithReachability: curReach];
+}
+
+
+
 //=============================
 //
 //
@@ -420,7 +539,7 @@ NSInteger iTimerCountDown = 3;
 //=============================
 
 - (void) InitXmlParser{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"NK113" ofType:@"xml"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"TPE4133" ofType:@"xml"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     xmlParser = [[NSXMLParser alloc] initWithData:data];
     _placemarks = [[NSMutableArray alloc] init];
@@ -489,6 +608,26 @@ NSInteger iTimerCountDown = 3;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    
+    // 初始化ADBannerView
+    // 竖屏
+    adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, 370, 0, 0)];//CGRectZero
+    adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
+    [self.view addSubview:adView];
+    adView.delegate = self;
+    adView.hidden = YES;
+    //横屏
+    adView.requiredContentSizeIdentifiers = [NSSet setWithObjects: ADBannerContentSizeIdentifierPortrait, ADBannerContentSizeIdentifierLandscape, nil];
+    
+    // Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the
+    // method "reachabilityChanged" will be called.
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+    
+    internetReach = [[Reachability reachabilityForInternetConnection] retain];
+    [internetReach startNotifier];
+    [self updateInterfaceWithReachability: internetReach];
+
+    
     // Init Data.
     taipeiCenterCoordinate.latitude = 25.048533;
     taipeiCenterCoordinate.longitude = 121.541343;
@@ -509,7 +648,13 @@ NSInteger iTimerCountDown = 3;
     MKCoordinateRegion userCurrentRegion;
     userCurrentRegion.center.latitude = locationManager.location.coordinate.latitude;
     userCurrentRegion.center.longitude = locationManager.location.coordinate.longitude;
-    if( userCurrentRegion.center.latitude == 0 || userCurrentRegion.center.longitude == 0 ){
+    
+    if( [locationManager locationServicesEnabled] ){
+        // can get user location, Region small.
+        userCurrentRegion.span.latitudeDelta = 0.01;
+        userCurrentRegion.span.longitudeDelta = 0.01;
+    }
+    else {
         // if can't get System Current Location. display Defined Taipei Center.
         userCurrentRegion.center.latitude = taipeiCenterCoordinate.latitude;
         userCurrentRegion.center.longitude = taipeiCenterCoordinate.longitude;
@@ -517,16 +662,12 @@ NSInteger iTimerCountDown = 3;
         userCurrentRegion.span.latitudeDelta = 0.05;
         userCurrentRegion.span.longitudeDelta = 0.05;
     }
-    else {
-        // can get user location, Region small.
-        userCurrentRegion.span.latitudeDelta = 0.01;
-        userCurrentRegion.span.longitudeDelta = 0.01;
-    }
     [mapView setRegion:userCurrentRegion animated:YES];
     
     // renew UI.
     btnAdjust.hidden = YES;
     btnAdjustBack.hidden = YES;
+    btnAdjustCurr.hidden = YES;
     btnAdjustSubmit.hidden = YES;
     btnAbout.hidden = YES;
     
