@@ -32,6 +32,9 @@
 		1BD337B21574E5D600813D5E /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD337B11574E5D600813D5E /* MyAnnotation.m */; };
 		1BF50BB215BCFCFD005E478A /* DDAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF50BB115BCFCFD005E478A /* DDAnnotation.m */; };
 		1BF5996C15DCE0C0008E426C /* TPE3490.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1BF5996B15DCE0C0008E426C /* TPE3490.xml */; };
+		1BF5A9D015E1B6C700F34A16 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF5A9CF15E1B6C700F34A16 /* Reachability.m */; };
+		1BF5A9D215E1B6FE00F34A16 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF5A9D115E1B6FE00F34A16 /* SystemConfiguration.framework */; };
+		1BF5A9D415E1B70500F34A16 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF5A9D315E1B70500F34A16 /* iAd.framework */; };
 		1BFB6EA615BD848100012384 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD3378F1574D3DB00813D5E /* Foundation.framework */; };
 		1BFB6EB715BD85C800012384 /* HSK_CFUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BFB6EB115BD85C800012384 /* HSK_CFUtilities.h */; };
 		1BFB6EB815BD85C800012384 /* HSK_CFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB6EB215BD85C800012384 /* HSK_CFUtilities.m */; };
@@ -93,6 +96,10 @@
 		1BF50BB015BCFCFD005E478A /* DDAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnnotation.h; sourceTree = "<group>"; };
 		1BF50BB115BCFCFD005E478A /* DDAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnnotation.m; sourceTree = "<group>"; };
 		1BF5996B15DCE0C0008E426C /* TPE3490.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TPE3490.xml; sourceTree = "<group>"; };
+		1BF5A9CE15E1B6C700F34A16 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		1BF5A9CF15E1B6C700F34A16 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		1BF5A9D115E1B6FE00F34A16 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1BF5A9D315E1B70500F34A16 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		1BFB6EA515BD848100012384 /* libsmtpmessage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsmtpmessage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFB6EB115BD85C800012384 /* HSK_CFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HSK_CFUtilities.h; path = TrashRouter/Classes/HSK_CFUtilities.h; sourceTree = SOURCE_ROOT; };
 		1BFB6EB215BD85C800012384 /* HSK_CFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HSK_CFUtilities.m; path = TrashRouter/Classes/HSK_CFUtilities.m; sourceTree = SOURCE_ROOT; };
@@ -113,6 +120,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BF5A9D415E1B70500F34A16 /* iAd.framework in Frameworks */,
+				1BF5A9D215E1B6FE00F34A16 /* SystemConfiguration.framework in Frameworks */,
 				1BFB6ED015BE2AB600012384 /* CFNetwork.framework in Frameworks */,
 				1BFB6ECF15BE2AA700012384 /* libsmtpmessage.a in Frameworks */,
 				1B8724A9157882C900F32CDE /* CoreLocation.framework in Frameworks */,
@@ -181,6 +190,8 @@
 		1BD3378C1574D3DB00813D5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1BF5A9D315E1B70500F34A16 /* iAd.framework */,
+				1BF5A9D115E1B6FE00F34A16 /* SystemConfiguration.framework */,
 				1BFB6EC015BD860600012384 /* CFNetwork.framework */,
 				1BFB6EBE15BD85FF00012384 /* CoreGraphics.framework */,
 				1B8724A8157882C900F32CDE /* CoreLocation.framework */,
@@ -194,6 +205,8 @@
 		1BD337931574D3DB00813D5E /* TrashRouter */ = {
 			isa = PBXGroup;
 			children = (
+				1BF5A9CE15E1B6C700F34A16 /* Reachability.h */,
+				1BF5A9CF15E1B6C700F34A16 /* Reachability.m */,
 				1B70BE2C15D9FA9C00320062 /* TrashRouter.entitlements */,
 				1BFB6ECA15BD90AB00012384 /* NSData+Base64Additions.h */,
 				1BFB6ECB15BD90AB00012384 /* NSData+Base64Additions.m */,
@@ -354,6 +367,7 @@
 				1BF50BB215BCFCFD005E478A /* DDAnnotation.m in Sources */,
 				1BFB6EC915BD90A200012384 /* Base64Transcoder.m in Sources */,
 				1BFB6ECC15BD90AB00012384 /* NSData+Base64Additions.m in Sources */,
+				1BF5A9D015E1B6C700F34A16 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

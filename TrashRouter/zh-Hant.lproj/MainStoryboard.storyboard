@@ -19,7 +19,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="06Y-YE-bzB">
-                                <rect key="frame" x="10" y="413" width="85" height="37"/>
+                                <rect key="frame" x="10" y="420" width="85" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="關於APP">
@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SCY-eJ-Rib">
-                                <rect key="frame" x="222" y="363" width="85" height="37"/>
+                                <rect key="frame" x="222" y="323" width="85" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="提報錯點">
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2bD-i7-6cE">
-                                <rect key="frame" x="117" y="363" width="85" height="37"/>
+                                <rect key="frame" x="117" y="323" width="85" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="以現在位置">
@@ -64,7 +64,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bw9-sa-dHs">
-                                <rect key="frame" x="117" y="413" width="85" height="37"/>
+                                <rect key="frame" x="117" y="420" width="85" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="提交作者">
@@ -79,7 +79,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9wr-J6-jSq">
-                                <rect key="frame" x="222" y="413" width="85" height="37"/>
+                                <rect key="frame" x="222" y="420" width="85" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="取消返回">
@@ -173,6 +173,7 @@
                 <relationship kind="action" name="sliderValueChanged:" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="AlphaActivityIndicatorView" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="AlphaImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="adView" candidateClass="ADBannerView"/>
                 <relationship kind="outlet" name="btnAbout" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="btnAdjust" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="btnAdjustBack" candidateClass="UIButton"/>
