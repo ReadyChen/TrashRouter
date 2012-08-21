@@ -220,6 +220,11 @@ static void strNameToStayTime(NSString *str, NSInteger *_iStartTime, NSInteger *
     }
     *_iStartTime = (iHHs)*60+iMMs;
     *_iEndTime = (iHHe)*60+iMMe;
+    
+    if(iHHe<6){
+        // when ~00:MM to ~05:MM
+        *_iEndTime = (iHHe+24)*60+iMMe;
+    }
 }
 
 @end

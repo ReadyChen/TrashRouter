@@ -47,8 +47,7 @@ NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range min
 //=============================
 
 -(IBAction)clickbyAbout:(UIButton *)sender{
-    NSLog(@"click by About");
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://sites.google.com/site/taipeitrashpoint/"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://sites.google.com/site/taipeitrashpoints/"]];
 }
 
 -(IBAction)clickAdjust:(UIButton *)sender{
@@ -167,7 +166,7 @@ NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range min
     if(iLength < 12)
     {
         // renew UI. reject Submit.
-        lblAlphaStatus.text = @"請先拖曳綠標";
+        lblAlphaStatus.text = @"請拖曳綠色大頭針";
         lblAlphaStatus.hidden = NO;
         AlphaImageView.hidden = NO;
         
@@ -492,9 +491,8 @@ NSInteger iTimerCountDown = 3;
     {
         case NotReachable:
         {
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"訊息"
-                                                            message:@"需要有網路連線才能使用"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"網路不存在"
+                                                            message:@"需要網路連線的存在，功能才能完整"
                                                            delegate:self
                                                   cancelButtonTitle:nil
                                                   otherButtonTitles:@"明白了", nil];
@@ -646,21 +644,16 @@ NSInteger iTimerCountDown = 3;
 
     // Display Map Region
     MKCoordinateRegion userCurrentRegion;
+    //if( [locationManager locationServicesEnabled] )
     userCurrentRegion.center.latitude = locationManager.location.coordinate.latitude;
     userCurrentRegion.center.longitude = locationManager.location.coordinate.longitude;
-    
-    if( [locationManager locationServicesEnabled] ){
-        // can get user location, Region small.
-        userCurrentRegion.span.latitudeDelta = 0.01;
-        userCurrentRegion.span.longitudeDelta = 0.01;
-    }
-    else {
+    userCurrentRegion.span.latitudeDelta = 0.01;
+    userCurrentRegion.span.longitudeDelta = 0.01;
+    if(userCurrentRegion.center.latitude==0||userCurrentRegion.center.longitude==0)
+    {
         // if can't get System Current Location. display Defined Taipei Center.
         userCurrentRegion.center.latitude = taipeiCenterCoordinate.latitude;
         userCurrentRegion.center.longitude = taipeiCenterCoordinate.longitude;
-        // can't get user location, Region large.
-        userCurrentRegion.span.latitudeDelta = 0.05;
-        userCurrentRegion.span.longitudeDelta = 0.05;
     }
     [mapView setRegion:userCurrentRegion animated:YES];
     

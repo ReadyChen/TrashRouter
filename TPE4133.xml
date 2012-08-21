@@ -2012,21 +2012,21 @@
 	<Placemark>
 		<CarNumber>92-971</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>18:00-18:15</Name>
+		<Name>18:00~18:15</Name>
 		<Address>臺北市信義區永吉路225巷52弄23號前(五常公園)</Address>
 		<Coordinates>25.04743,121.57334</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-971</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>18:18-18:38</Name>
+		<Name>18:18~18:38</Name>
 		<Address>臺北市信義區永吉路321巷口</Address>
 		<Coordinates>25.04553,121.57551</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-971</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>18:40-18:50</Name>
+		<Name>18:40~18:50</Name>
 		<Address>臺北市信義區永吉路189號</Address>
 		<Coordinates>25.04564,121.57277</Coordinates>
 	</Placemark>
@@ -2796,98 +2796,98 @@
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>17:20-17:35</Name>
+		<Name>17:20~17:35</Name>
 		<Address>臺北市大安區忠孝東路四段216巷39號前</Address>
 		<Coordinates>25.03924,121.55301</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>17:38-17:43</Name>
+		<Name>17:38~17:43</Name>
 		<Address>臺北市大安區忠孝東路四段216巷29號</Address>
 		<Coordinates>25.03979,121.55301</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>17:50-17:55</Name>
+		<Name>17:50~17:55</Name>
 		<Address>臺北市大安區忠孝東路四段203號</Address>
 		<Coordinates>25.041530,121.552082</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>17:58-18:03</Name>
+		<Name>17:58~18:03</Name>
 		<Address>臺北市大安區忠孝東路四段179號</Address>
 		<Coordinates>25.04157,121.55088</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>18:08-18:12</Name>
+		<Name>18:08~18:12</Name>
 		<Address>臺北市大安區忠孝東路四段145號</Address>
 		<Coordinates>25.04159,121.54978</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>19:35-19:40</Name>
+		<Name>19:35~19:40</Name>
 		<Address>臺北市大安區光復南路344號（第2次收集）</Address>
 		<Coordinates>25.03841,121.55718</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>19:50-19:55</Name>
+		<Name>19:50~19:55</Name>
 		<Address>臺北市大安區仁愛路四段27巷11號</Address>
 		<Coordinates>25.03940,121.54521</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>19:57-20:00</Name>
+		<Name>19:57~20:00</Name>
 		<Address>臺北市大安區仁愛路四段27巷1號</Address>
 		<Coordinates>25.03862,121.54521</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>20:10-20:20</Name>
+		<Name>20:10~20:20</Name>
 		<Address>臺北市大安區忠孝東路四段170巷5弄20號</Address>
 		<Coordinates>25.040808,121.551414</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>20:25-20:30</Name>
+		<Name>20:25~20:30</Name>
 		<Address>臺北市大安區仁愛路四段153號</Address>
 		<Coordinates>25.038086,121.547772</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>21:45-21:50</Name>
+		<Name>21:45~21:50</Name>
 		<Address>臺北市大安區敦化南路一段252巷13號前</Address>
 		<Coordinates>25.03977,121.54718</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>21:55-22:00</Name>
+		<Name>21:55~22:00</Name>
 		<Address>臺北市大安區仁愛路四段99號前</Address>
 		<Coordinates>25.03848,121.54819</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>22:03-22:07</Name>
+		<Name>22:03~22:07</Name>
 		<Address>臺北市大安區仁愛路四段69號前</Address>
 		<Coordinates>25.03810,121.54716</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>100-023</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>22:10-22:20</Name>
+		<Name>22:10~22:20</Name>
 		<Address>臺北市大安區大安路一段146號</Address>
 		<Coordinates>25.03861,121.54606</Coordinates>
 	</Placemark>
@@ -3909,70 +3909,70 @@
 	<Placemark>
 		<CarNumber>90-924</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>17:00-17:05</Name>
+		<Name>17:00~17:05</Name>
 		<Address>臺北市大安區市民大道四段200號前</Address>
 		<Coordinates>25.044626,121.555668</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>90-924</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>17:10-17:15</Name>
+		<Name>17:10~17:15</Name>
 		<Address>臺北市大安區忠孝東路四段343號前</Address>
 		<Coordinates>25.041493,121.557709</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>90-924</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>17:25-17:35</Name>
+		<Name>17:25~17:35</Name>
 		<Address>臺北市大安區忠孝東路四段99號</Address>
 		<Coordinates>25.041617,121.548037</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>90-924</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>19:05-19:25</Name>
+		<Name>19:05~19:25</Name>
 		<Address>臺北市大安區大安路一段54號</Address>
 		<Coordinates>25.041571,121.546133</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>90-924</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>19:35-19:45</Name>
+		<Name>19:35~19:45</Name>
 		<Address>臺北市大安區延吉街131巷43號對面(第2次收集)</Address>
 		<Coordinates>25.04292,121.55607</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>90-924</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>21:05-21:10</Name>
+		<Name>21:05~21:10</Name>
 		<Address>臺北市大安區安和路一段33號前</Address>
 		<Coordinates>25.038538,121.550795</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>90-924</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>21:12-21:15</Name>
+		<Name>21:12~21:15</Name>
 		<Address>臺北市大安區安和路一段7號前</Address>
 		<Coordinates>25.039763,121.549711</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>90-924</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>21:25-21:30</Name>
+		<Name>21:25~21:30</Name>
 		<Address>臺北市大安區復興南路一段133號</Address>
 		<Coordinates>25.042679,121.543950</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>90-924</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>21:40-21:45</Name>
+		<Name>21:40~21:45</Name>
 		<Address>臺北市大安區光復南路96巷2號前</Address>
 		<Coordinates>25.04400,121.55733</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>90-924</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>21:48-21:53</Name>
+		<Name>21:48~21:53</Name>
 		<Address>臺北市大安區市民大道四段200號前(第2次收集)</Address>
 		<Coordinates>25.044645,121.555765</Coordinates>
 	</Placemark>
@@ -4233,7 +4233,7 @@
 		<CarRound>第1車</CarRound>
 		<Name>17:05~17:10</Name>
 		<Address>臺北市大安區安和路二段1號前</Address>
-		<Coordinates>25.028983,121.550728</Coordinates>
+		<Coordinates>25.033029,121.552467</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-967</CarNumber>
@@ -4308,105 +4308,105 @@
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>17:20-17:25</Name>
+		<Name>17:20~17:25</Name>
 		<Address>臺北市大安區復興南路一段217號</Address>
 		<Coordinates>25.039119,121.543853</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>17:28-17:33</Name>
+		<Name>17:28~17:33</Name>
 		<Address>臺北市大安區復興南路一段179號前</Address>
 		<Coordinates>25.040767,121.543920</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>17:38-17:43</Name>
+		<Name>17:38~17:43</Name>
 		<Address>臺北市大安區忠孝東路四段76號前</Address>
 		<Coordinates>25.041518,121.545755</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>17:48-17:53</Name>
+		<Name>17:48~17:53</Name>
 		<Address>臺北市大安區忠孝東路四段122號前</Address>
 		<Coordinates>25.041289,121.547418</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第1車</CarRound>
-		<Name>18:05-18:15</Name>
+		<Name>18:05~18:15</Name>
 		<Address>臺北市大安區光復南路344號前</Address>
 		<Coordinates>25.038439,121.557138</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>19:40-19:48</Name>
+		<Name>19:40~19:48</Name>
 		<Address>臺北市大安區忠孝東路四段301號前</Address>
 		<Coordinates>25.041479,121.555215</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>19:50-19:55</Name>
+		<Name>19:50~19:55</Name>
 		<Address>臺北市大安區忠孝東路四段285號前</Address>
 		<Coordinates>25.041496,121.554225</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>20:02-20:07</Name>
+		<Name>20:02~20:07</Name>
 		<Address>臺北市大安區敦化南路一段161巷77號前</Address>
 		<Coordinates>25.04348,121.55302</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>20:10-20:15</Name>
+		<Name>20:10~20:15</Name>
 		<Address>臺北市大安區敦化南路一段161巷43號前</Address>
 		<Coordinates>25.043535,121.551159</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第2車</CarRound>
-		<Name>20:20-20:25</Name>
+		<Name>20:20~20:25</Name>
 		<Address>臺北市大安區敦化南路一段161巷7號</Address>
 		<Coordinates>25.043578,121.549724</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>21:40-21:45</Name>
+		<Name>21:40~21:45</Name>
 		<Address>臺北市大安區延吉街131巷43號對面(第1次收集）</Address>
 		<Coordinates>25.042859,121.555942</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>21:50-21:55</Name>
+		<Name>21:50~21:55</Name>
 		<Address>臺北市大安區忠孝東路四段223巷10弄1-6號</Address>
 		<Coordinates>25.042108,121.553056</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>21:58-22:02</Name>
+		<Name>21:58~22:02</Name>
 		<Address>臺北市大安區敦化南路一段187巷48號</Address>
 		<Coordinates>25.042548,121.551640</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>22:05-22:08</Name>
+		<Name>22:05~22:08</Name>
 		<Address>臺北市大安區敦化南路一段187巷27號</Address>
 		<Coordinates>25.042616,121.550610</Coordinates>
 	</Placemark>
 	<Placemark>
 		<CarNumber>92-968</CarNumber>
 		<CarRound>第3車</CarRound>
-		<Name>22:10-22:12</Name>
+		<Name>22:10~22:12</Name>
 		<Address>臺北市大安區敦化南路一段187巷15號</Address>
 		<Coordinates>25.042628,121.550011</Coordinates>
 	</Placemark>
@@ -21563,7 +21563,7 @@
 	<Placemark>
 		<CarNumber>92-994</CarNumber>
 		<CarRound>第一車</CarRound>
-		<Name>17:20~1830</Name>
+		<Name>17:20~18:30</Name>
 		<Address>臺北市北投區石牌公園</Address>
 		<Coordinates>25.116582,121.510554</Coordinates>
 	</Placemark>
