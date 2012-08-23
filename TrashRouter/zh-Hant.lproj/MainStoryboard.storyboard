@@ -167,13 +167,11 @@
                 <relationship kind="action" name="clickAdjust:" candidateClass="UIButton"/>
                 <relationship kind="action" name="clickAdjustBack:" candidateClass="UIButton"/>
                 <relationship kind="action" name="clickAdjustCurr:" candidateClass="UIButton"/>
-                <relationship kind="action" name="clickAdjustSubmit:" candidateClass="UIButton"/>
                 <relationship kind="action" name="clickSetCurr:"/>
                 <relationship kind="action" name="clickbyAbout:" candidateClass="UIButton"/>
                 <relationship kind="action" name="sliderValueChanged:" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="AlphaActivityIndicatorView" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="AlphaImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="adView" candidateClass="ADBannerView"/>
                 <relationship kind="outlet" name="btnAbout" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="btnAdjust" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="btnAdjustBack" candidateClass="UIButton"/>

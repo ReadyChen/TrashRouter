@@ -18,7 +18,7 @@
 @class KMLPlacemark;
 @class Reachability;
 
-@interface ViewController : UIViewController <NSXMLParserDelegate,MKMapViewDelegate,CLLocationManagerDelegate,SKPSMTPMessageDelegate> {
+@interface ViewController : UIViewController <NSXMLParserDelegate,MKMapViewDelegate,CLLocationManagerDelegate,SKPSMTPMessageDelegate,ADBannerViewDelegate> {
     IBOutlet MKMapView *mapView;
     NSXMLParser *xmlParser;
     IBOutlet UISlider *mySlider;
@@ -34,8 +34,9 @@
     IBOutlet UIImageView *AlphaImageView;
     IBOutlet UILabel *lblAlphaStatus;
     IBOutlet UIButton *btnAbout;
-    ADBannerView *adView;
     Reachability* internetReach;
+    id _adBannerView;
+    BOOL _adBannerViewIsVisible;
 }
 
 @property(assign, nonatomic) IBOutlet MKMapView *mapView;
@@ -53,9 +54,9 @@
 @property (nonatomic, retain) IBOutlet UIImageView *AlphaImageView;
 @property (nonatomic, retain) IBOutlet UILabel *lblAlphaStatus;
 @property (nonatomic, retain) IBOutlet UIButton *btnAbout;
-@property (nonatomic, assign)BOOL adViewIsVisible;
-@property (nonatomic, retain)IBOutlet ADBannerView *adView;
 @property (nonatomic, retain)Reachability* internetReach;
+@property (nonatomic, retain) id adBannerView;
+@property (nonatomic) BOOL adBannerViewIsVisible;
 
 
 @end

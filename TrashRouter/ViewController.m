@@ -25,8 +25,9 @@
 @synthesize btnAdjust,btnAdjustBack,btnAdjustCurr,btnAdjustSubmit,btnAbout;
 @synthesize toolbar;
 @synthesize AlphaActivityIndicatorView,AlphaImageView,lblAlphaStatus;
-@synthesize adView, adViewIsVisible;
 @synthesize internetReach;
+@synthesize adBannerView = _adBannerView;
+@synthesize adBannerViewIsVisible = _adBannerViewIsVisible;
 
 CLLocationCoordinate2D taipeiCenterCoordinate; // define Taipei Center Coordinate.
 CLLocationManager *locationManager; // use for user current Location.
@@ -162,7 +163,6 @@ NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range min
 -(IBAction)clickAdjustSubmit:(UIButton *)sender{
     
     NSInteger iLength = [annotationAdjust.title length];
-    NSLog(@"%d",iLength);
     if(iLength < 12)
     {
         // renew UI. reject Submit.
@@ -171,6 +171,7 @@ NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range min
         AlphaImageView.hidden = NO;
         
         btnAdjustBack.enabled = NO;
+        btnAdjustCurr.enabled = NO;
         btnAdjustSubmit.enabled = NO;
         btnAbout.enabled = NO;
         
@@ -236,6 +237,7 @@ NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range min
     AlphaImageView.hidden = NO;
     
     btnAdjustBack.enabled = NO;
+    btnAdjustCurr.enabled = NO;
     btnAdjustSubmit.enabled = NO;
     btnAbout.enabled = NO;
 }
@@ -244,7 +246,7 @@ NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range min
 {
     [message release];
     
-    NSLog(@"delegate - message sent");
+    //NSLog(@"delegate - message sent");
     
     // renew UI.
     lblAlphaStatus.text = @"已完成,謝謝";
@@ -258,7 +260,7 @@ NSTimer *HHMMTimer; // for display user time 1 sec. when out of slider range min
 {
     [message release];
     
-    NSLog(@"delegate - error(%d): %@", [error code], [error localizedDescription]);
+    //NSLog(@"delegate - error(%d): %@", [error code], [error localizedDescription]);
     
     // renew UI.
     lblAlphaStatus.text = @"伺服器錯誤";
@@ -282,6 +284,7 @@ NSInteger iTimerCountDown = 3;
         AlphaImageView.hidden = YES;
         
         btnAdjustBack.enabled = YES;
+        btnAdjustCurr.enabled = YES;
         btnAdjustSubmit.enabled = YES;
         btnAbout.enabled = YES;
         
@@ -328,7 +331,7 @@ NSInteger iTimerCountDown = 3;
     NSInteger min = [comps minute];
     NSInteger sec = [comps second];
     
-    NSLog(@"%4d/%02d/%02d (%d) %02d:%02d:%02d", year,month,day,week,hour,min,sec);
+    //NSLog(@"%4d/%02d/%02d (%d) %02d:%02d:%02d", year,month,day,week,hour,min,sec);
     
     NSInteger iTmpValue = hour*60+min;
     
@@ -399,12 +402,12 @@ NSInteger iTimerCountDown = 3;
         
         if(0)
         {
-            NSLog(@"<Placemark>");
-            NSLog(@"   <Name>%@</Name>", strTmpName);
-            NSLog(@"   <Coordinates>%f,%f</Coordinates>", TmpAnnotation->myCoordinate.longitude, TmpAnnotation->myCoordinate.latitude);
-            NSLog(@"   <StayTime>%i,%i</StayTime>", iTmpStartTime, iTmpEndTime);
-            NSLog(@"</Placemark>");
-            NSLog(@" ");
+            //NSLog(@"<Placemark>");
+            //NSLog(@"   <Name>%@</Name>", strTmpName);
+            //NSLog(@"   <Coordinates>%f,%f</Coordinates>", TmpAnnotation->myCoordinate.longitude, TmpAnnotation->myCoordinate.latitude);
+            //NSLog(@"   <StayTime>%i,%i</StayTime>", iTmpStartTime, iTmpEndTime);
+            //NSLog(@"</Placemark>");
+            //NSLog(@" ");
         }
         
         if(iNewStatus != iTmpStatus)
@@ -439,30 +442,98 @@ NSInteger iTimerCountDown = 3;
 //
 //
 //=============================
--(void)bannerViewDidLoadAd:(ADBannerView *)abanner {
-    
-    adView.hidden = NO;
-    //NSLog(@"ad bannerViewDidLoadAd = %d",adView.bannerLoaded);
-    
+
+- (int)getBannerHeight {
+    CGFloat adbannerHeight = [_adBannerView frame].size.height;
+    //NSLog(@" adbannerHeight %f", adbannerHeight);
+    return (int)adbannerHeight;
 }
 
--(void)bannerView:(ADBannerView *)abanner didFailToReceiveAdWithError:(NSError *)error {
-    
-    //NSLog(@"ad didFailToReceiveAdWithError error:%@",error);
+- (void)createAdBannerView {
+    //NSLog(@" createAdBannerView");
+    Class classAdBannerView = NSClassFromString(@"ADBannerView");
+    if (classAdBannerView != nil) {
+        //self.adBannerView = [[[classAdBannerView alloc] initWithFrame:CGRectZero] autorelease];
+        //self.adBannerView = [[[classAdBannerView alloc] initWithFrame:CGRectMake(0, 400+[self getBannerHeight], 0, 0)] autorelease];
+        self.adBannerView = [[[classAdBannerView alloc] initWithFrame:CGRectMake(0, 480, 0, 0)] autorelease];
+        [_adBannerView setRequiredContentSizeIdentifiers:[NSSet setWithObjects: ADBannerContentSizeIdentifierPortrait, ADBannerContentSizeIdentifierLandscape, nil]];
+        if (UIInterfaceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+            [_adBannerView setCurrentContentSizeIdentifier:ADBannerContentSizeIdentifierLandscape];
+        } else {
+            [_adBannerView setCurrentContentSizeIdentifier:ADBannerContentSizeIdentifierPortrait];
+        }
+        //[_adBannerView setFrame:CGRectOffset([_adBannerView frame], 0, 400+[self getBannerHeight])];
+        [_adBannerView setFrame:CGRectOffset([_adBannerView frame], 0, 480)];
+        [_adBannerView setDelegate:self];
+        
+        [self.view addSubview:_adBannerView];
+    }
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    //NSLog(@"ad rotate");
-    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation))
-    {
-        adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierLandscape;
-        adView.frame = CGRectMake(0, 225, 0, 0);//CGRectZero;
+- (void)fixupAdView:(UIInterfaceOrientation)toInterfaceOrientation {
+    //NSLog(@" fixupAdView %d", toInterfaceOrientation);
+    if (_adBannerView != nil) {
+        if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+            [_adBannerView setCurrentContentSizeIdentifier:ADBannerContentSizeIdentifierLandscape];
+        } else {
+            [_adBannerView setCurrentContentSizeIdentifier:ADBannerContentSizeIdentifierPortrait];
+        }
+        [UIView beginAnimations:@"fixupViews" context:nil];
+        if (_adBannerViewIsVisible) {
+            // 彈出來
+            CGRect adBannerViewFrame = [_adBannerView frame];
+            adBannerViewFrame.origin.x = 0;
+            adBannerViewFrame.origin.y = [self getScreenHeight:toInterfaceOrientation]-64-[self getBannerHeight];
+            [_adBannerView setFrame:adBannerViewFrame];
+        } else {
+            // 縮起來
+            CGRect adBannerViewFrame = [_adBannerView frame];
+            adBannerViewFrame.origin.x = 0;
+            adBannerViewFrame.origin.y = [self getScreenHeight:toInterfaceOrientation];
+            [_adBannerView setFrame:adBannerViewFrame];
+        }
+        [UIView commitAnimations];
+    }
+}
+
+-(CGFloat)getScreenHeight:(UIInterfaceOrientation)toInterfaceOrientation {
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    
+    //CGFloat toolbarHeight = [toolbar frame].size.height;
+    //CGFloat adbannerHeight = [_adBannerView frame].size.height;
+    //NSLog(@" %f, %f, %f, %f", screenSize.width, screenSize.height, toolbarHeight, adbannerHeight);
+    
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        return screenSize.width;
     }
     else
     {
-        adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
-        adView.frame = CGRectMake(0, 370, 0, 0);//CGRectZero;
+        return screenSize.height;
+    }
+}
+
+#pragma mark ADBannerViewDelegate
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
+    //NSLog(@" bannerViewDidLoadAd");
+    
+    if (!_adBannerViewIsVisible) {
+        _adBannerViewIsVisible = YES;
+        //NSLog(@" _adBannerViewIsVisible = YES");
+        [self fixupAdView:[UIDevice currentDevice].orientation];
+    }
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    //NSLog(@"ad didFailToReceiveAdWithError  Error:%@", error);
+    if (_adBannerViewIsVisible)
+    {
+        _adBannerViewIsVisible = NO;
+        //NSLog(@" _adBannerViewIsVisible = NO");
+        [self fixupAdView:[UIDevice currentDevice].orientation];
     }
 }
 
@@ -551,7 +622,7 @@ NSInteger iTimerCountDown = 3;
 {
     //for(id key in attributeDict)
     //{
-    //    NSLog(@"attribute %@", [attributeDict objectForKey:key]);
+    //    //NSLog(@"attribute %@", [attributeDict objectForKey:key]);
     //}
     
     NSString *ident = [attributeDict objectForKey:@"id"];
@@ -608,14 +679,7 @@ NSInteger iTimerCountDown = 3;
     
     
     // 初始化ADBannerView
-    // 竖屏
-    adView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, 370, 0, 0)];//CGRectZero
-    adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
-    [self.view addSubview:adView];
-    adView.delegate = self;
-    adView.hidden = YES;
-    //横屏
-    adView.requiredContentSizeIdentifiers = [NSSet setWithObjects: ADBannerContentSizeIdentifierPortrait, ADBannerContentSizeIdentifierLandscape, nil];
+    [self createAdBannerView];
     
     // Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the
     // method "reachabilityChanged" will be called.
@@ -681,6 +745,16 @@ NSInteger iTimerCountDown = 3;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    //NSLog(@"ad rotate to %d", toInterfaceOrientation);
+    [self fixupAdView:toInterfaceOrientation];
+}
+
+- (void)dealloc {
+    //self.adBannerView = nil;
+    [super dealloc];
 }
 
 
