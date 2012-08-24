@@ -336,17 +336,17 @@ NSInteger iTimerCountDown = 3;
     NSInteger iTmpValue = hour*60+min;
     
     // renew Slider & HHMM
-    if ( iTmpValue < 990 ) {
+    if ( iTmpValue < mySlider.minimumValue ) {
         [self UpdateHHMM:iTmpValue];
         lblSlider.textColor = [UIColor blackColor];
         HHMMTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(HHMMTimerFunc) userInfo:nil repeats:NO];
-        mySlider.value = 990;
+        mySlider.value = mySlider.minimumValue;
         iSliderValue = mySlider.value;
-    } else if ( iTmpValue > 1420 ) {
+    } else if ( iTmpValue > mySlider.maximumValue ) {
         [self UpdateHHMM:iTmpValue];
         lblSlider.textColor = [UIColor blackColor];
         HHMMTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(HHMMTimerFunc) userInfo:nil repeats:NO];
-        mySlider.value = 1420;
+        mySlider.value = mySlider.maximumValue;
         iSliderValue = mySlider.value;
     } else {
         mySlider.value = iTmpValue;
@@ -711,8 +711,8 @@ NSInteger iTimerCountDown = 3;
     //if( [locationManager locationServicesEnabled] )
     userCurrentRegion.center.latitude = locationManager.location.coordinate.latitude;
     userCurrentRegion.center.longitude = locationManager.location.coordinate.longitude;
-    userCurrentRegion.span.latitudeDelta = 0.01;
-    userCurrentRegion.span.longitudeDelta = 0.01;
+    userCurrentRegion.span.latitudeDelta = 0.005;
+    userCurrentRegion.span.longitudeDelta = 0.005;
     if(userCurrentRegion.center.latitude==0||userCurrentRegion.center.longitude==0)
     {
         // if can't get System Current Location. display Defined Taipei Center.

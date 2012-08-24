@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B1A41F015E478420011768A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BFB6EBE15BD85FF00012384 /* CoreGraphics.framework */; };
 		1B871D1F15E43E8600DAA2BE /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B871D1A15E43E8600DAA2BE /* Icon-57.png */; };
 		1B871D2015E43E8600DAA2BE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B871D1B15E43E8600DAA2BE /* Icon-72.png */; };
 		1B871D2115E43E8600DAA2BE /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B871D1C15E43E8600DAA2BE /* Icon-114.png */; };
@@ -110,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B1A41F015E478420011768A /* CoreGraphics.framework in Frameworks */,
 				1BF5A9D415E1B70500F34A16 /* iAd.framework in Frameworks */,
 				1BF5A9D215E1B6FE00F34A16 /* SystemConfiguration.framework in Frameworks */,
 				1BFB6ED015BE2AB600012384 /* CFNetwork.framework in Frameworks */,
@@ -411,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C7522242-C283-4084-B76C-7799350FD5C9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2040FF13-D374-4BEB-9019-8D2004F97D33";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -423,6 +425,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WeiTing Chen";
+				"CODE_SIGN_RESOURCE_RULES_PATH[sdk=*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -431,7 +434,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A75D9E43-2BE1-4991-A57A-5F3C1284B38D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F95F8FBC-DB68-48F5-8BE3-A2ABFAACEC26";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -495,7 +498,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = NO;
+				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = NO;
 			};
 			name = Release;
